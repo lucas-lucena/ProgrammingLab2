@@ -25,6 +25,16 @@ class ContactTest {
 	}
 	
 	@Test
+	void ConstructorTest {
+		assetThrows(new Contatnct(null,"Lucena", "1220"));
+		assetThrows(new Contatnct("Lucas",null, "1220"));
+		assetThrows(new Contatnct("Lucas","Lucena", null));
+		assetThrows(new Contatnct("","Lucena", "1220"));
+		assetThrows(new Contatnct("Lucas","", "1220"));
+		assetThrows(new Contatnct("Lucas","Lucena", ""));
+	}
+	
+	@Test
 	void toStringTest() {
 		assertEquals(c1.toString(), "Lucas Lucena - 1220" );
 		assertEquals(c2.toString(), "Mateus Henrique - 1717" );
