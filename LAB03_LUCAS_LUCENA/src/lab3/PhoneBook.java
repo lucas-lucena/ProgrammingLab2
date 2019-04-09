@@ -35,16 +35,6 @@ public class PhoneBook {
 	 */
 	public String registerContact(int position, String firstName, String lastName, String phoneNumber) {
 		try {
-			if (firstName == null || firstName.trim().equals("")) {
-				return "NOME INVALIDO!\n";
-			}
-			else if (lastName == null || lastName.trim().equals("")) {
-				return "SOBRENOME INVALIDO!\n";
-			}
-			else if (phoneNumber == null || phoneNumber.trim().equals("")) {
-				return "TELEFONE INVALIDO!\n";
-			}
-			else {
 			this.contacts[position-1] = new Contact(firstName, lastName, phoneNumber);;
 			return "CADASTRO REALIZADO!\n";
 			}

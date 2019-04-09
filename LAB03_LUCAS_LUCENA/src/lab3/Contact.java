@@ -32,10 +32,31 @@ public class Contact {
 	 * @param phoneNumber
 	 */
 	public Contact(String firstName, String lastName, String phoneNumber) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
+		if (firstName == null) {
+			throw new NullPointerException("NOME NULO!");
 		}
+		if (lastName == null) {
+			throw new NullPointerException("SOBRENOME NULO!");
+		} 
+		if (phoneNumber == null) {
+			throw new NullPointerException("TELEFONE NULO!");
+		}
+		
+		if (firstName.trim().equals("")) {
+			throw new IllegalArgumentException("NOME INVALIDO!");
+		}
+		else if (lastName.trim().equals("")) {
+			throw new IllegalArgumentException("SOBRENOME INVALIDO!");
+		}
+		else if (phoneNumber.trim().equals("")) {
+			throw new IllegalArgumentException("TELEFONE INVALIDO!");
+		} 
+		else {
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.phoneNumber = phoneNumber;
+		}
+	}
 
 	/**
 	 * Retorna a representação em String do nome completo seguindo
