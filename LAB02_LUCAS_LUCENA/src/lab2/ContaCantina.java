@@ -25,7 +25,7 @@ public class ContaCantina {
 	private int itens;
 
 	/**
-	 * Valor total da divida.
+	 * Soma do valor de todos os itens comprados na cantina até então.	
 	 */
 	private int dividaTotal;
 

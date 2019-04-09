@@ -24,11 +24,6 @@ public class Disciplina {
 	private double[] notas;
 
 	/**
-	 * A media das notas.
-	 */
-	private double media;
-
-	/**
 	 * Constrói a Disciplina com o nome fornecido, e predefine 0 horas de estudo,
 	 * uma lista para atribuir as 4 notas e a media igual a 0,0.
 	 * 
@@ -38,7 +33,6 @@ public class Disciplina {
 		this.nome = nomeDaDisciplina;
 		this.horas = 0;
 		this.notas = new double[4];
-		this.media = 0.0;
 	}
 
 	/**
@@ -66,12 +60,12 @@ public class Disciplina {
 	 * @return A media das notas.
 	 */
 	private double fazMedia() {
-		this.media = 0.0;
+		double media = 0.0;
 		for (int i = 0; i < 4; i++) {
-			this.media += this.notas[i];
+			media += this.notas[i];
 		}
-		this.media = media / 4.0;
-		return (this.media);
+		media = media / 4.0;
+		return (media);
 	}
 
 	/**
@@ -90,7 +84,7 @@ public class Disciplina {
 	 * @return A representação em String da Disciplina.
 	 */
 	public String toString() {
-		return nome + " " + horas + " " + media + " [" + notas[0] + ", " + notas[1] + ", " + notas[2] + ", " + notas[3]
-				+ "]";
+		return 	nome + " " + horas + " " + this.fazMedia() + " [" + notas[0] + ", " +
+				notas[1] + ", " + notas[2] + ", " + notas[3] + "]";
 	}
 }

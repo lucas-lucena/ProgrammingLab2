@@ -13,6 +13,7 @@ class ContactTest {
 	private Contact c4;
 	private Contact c5;
 	private Contact c6;
+	private Contact c7;
 	
 	@BeforeEach
 	void creatContact() {
@@ -22,16 +23,17 @@ class ContactTest {
     	c4 = new Contact("Rodrigo", "Estrela", "9988");
     	c5 = new Contact("Mateus", "Henrique", "1717");
     	c6 = new Contact("Lucas", "Lucena", "0221");
+    	c7 = new Contact("Lucas", "Leal", "0221");
 	}
 	
 	@Test
-	void ConstructorTest {
-		assetThrows(new Contatnct(null,"Lucena", "1220"));
-		assetThrows(new Contatnct("Lucas",null, "1220"));
-		assetThrows(new Contatnct("Lucas","Lucena", null));
-		assetThrows(new Contatnct("","Lucena", "1220"));
-		assetThrows(new Contatnct("Lucas","", "1220"));
-		assetThrows(new Contatnct("Lucas","Lucena", ""));
+	void ConstructorTest() {
+		assertThrows(NullPointerException.class, () -> new Contact(null,"Lucena", "1220"));
+		assertThrows(NullPointerException.class, () -> new Contact("Lucas",null, "1220"));
+		assertThrows(NullPointerException.class, () -> new Contact("Lucas","Lucena", null));
+		assertThrows(IllegalArgumentException.class, () -> new Contact("","Lucena", "1220"));
+		assertThrows(IllegalArgumentException.class, () -> new Contact("Lucas","", "1220"));
+		assertThrows(IllegalArgumentException.class, () -> new Contact("Lucas","Lucena", ""));
 	}
 	
 	@Test
@@ -57,15 +59,6 @@ class ContactTest {
 	@Test
 	void equalsTest() {
 		
-		Contact ctest1 = new Contact(null, "leal", "123");
-		Contact ctest4 = new Contact(null, "leal", "123");
-		
-		Contact ctest2 = new Contact("lucas", null, "123");
-		Contact ctest5 = new Contact("lucas", null, "123");
-		
-		Contact ctest3 = new Contact("lucas", "leal", "123");
-		
-
 		assertTrue(c1.equals(c1));
 		assertFalse(c1.equals(null));
 		assertFalse(c1.equals("Teste"));
@@ -81,6 +74,7 @@ class ContactTest {
 		assertFalse(c1.equals(c3));
 		assertFalse(c1.equals(c4));
 		assertFalse(c1.equals(c5));
+		assertFalse(c1.equals(c7));
 		
 		assertFalse(c2.equals(c1));
 		assertFalse(c2.equals(c3));
@@ -106,12 +100,5 @@ class ContactTest {
 		assertFalse(c6.equals(c3));
 		assertFalse(c6.equals(c4));
 		assertFalse(c6.equals(c5));
-		
-		assertTrue(ctest1.equals(ctest4));
-		assertTrue(ctest2.equals(ctest5));
-		assertFalse(ctest1.equals(ctest2));
-		assertFalse(ctest2.equals(ctest1));
-		assertFalse(ctest2.equals(ctest3));
-		assertFalse(ctest3.equals(ctest2));
 	}	
 }

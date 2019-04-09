@@ -37,7 +37,6 @@ public class PhoneBook {
 		try {
 			this.contacts[position-1] = new Contact(firstName, lastName, phoneNumber);;
 			return "CADASTRO REALIZADO!\n";
-			}
 		} catch (IndexOutOfBoundsException ioobe) {
 			return "POSIÇÃO INVÁLIDA!\n";
 		}
