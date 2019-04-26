@@ -87,6 +87,11 @@ public class Controller {
 	}
 	
 	public String ImprimeRespondemQuestoes ( ) {
-		return "\nAlunos:\n" + respondemQuestoes.trim() + "\n";
+		if (respondemQuestoes.equals("")) {
+			return "\nNENHUM ALUNO RESPONDEU QUESTÕES NO QUADRO\n";
+		}
+		else {
+			return "\nAlunos:\n" + respondemQuestoes;
+		}
 	}
 }

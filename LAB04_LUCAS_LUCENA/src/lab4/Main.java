@@ -99,6 +99,13 @@ public class Main {
 				case "I":
 					System.out.println(controller.ImprimeRespondemQuestoes());
 					break;
+					
+				default:
+					if (operation.equals("O")) {
+						System.out.print("Programa encerrado!");
+					} else {
+						System.out.println("\nOpção inválida!\n");
+					}
 			}
 		}
 			while(!operation.equals("O"));
