@@ -23,7 +23,7 @@ public class Aluno {
 	}
 	
 	public String toString() {
-		return "Aluno: " + this.matricula +
+		return this.matricula +
 				" - " + this.nome +
 				" - " + this.curso;
 	}

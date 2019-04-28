@@ -51,7 +51,7 @@ public class Main {
 					curso = scanner.nextLine();
 					
 					/** Cadastra um aluno e informa se aquela matricula já foi cadastrada. */
-					System.out.println(controller.CadastraAluno(matricula, aluno, curso));
+					System.out.println(controller.cadastraAluno(matricula, aluno, curso));
 
 					break;
 				
@@ -59,14 +59,14 @@ public class Main {
 					System.out.print("Matrícula: ");
 					matricula = scanner.nextLine();
 					
-					System.out.println(controller.ConsultaAluno(matricula));
+					System.out.println(controller.consultaAluno(matricula));
 					break;
 					
 				case "N":
 					System.out.print("Grupo: ");
 					grupo = scanner.nextLine();
 					
-					System.out.println(controller.CadastraGrupo(grupo));
+					System.out.println(controller.cadastraGrupo(grupo));
 					break;
 				
 				case "A":
@@ -79,13 +79,13 @@ public class Main {
 						System.out.print("Grupo: ");
 						grupo = scanner.nextLine();
 						
-						System.out.println(controller.AlocarAluno(matricula, grupo));
+						System.out.println(controller.alocarAluno(matricula, grupo));
 					}
 					if (checador.toUpperCase().equals("I")) {
 						System.out.print("Grupo: ");
 						grupo = scanner.nextLine();
 						
-						System.out.println(controller.ImprimirGrupo(grupo));
+						System.out.println(controller.imprimirGrupo(grupo));
 					}
 					break;
 					
@@ -93,11 +93,11 @@ public class Main {
 					System.out.print("Matrícula: ");
 					matricula = scanner.nextLine();
 					
-					System.out.println(controller.CadastraRespondemQuestoes(matricula));
+					System.out.println(controller.cadastraRespondemQuestoes(matricula));
 					break;
 					
 				case "I":
-					System.out.println(controller.ImprimeRespondemQuestoes());
+					System.out.println(controller.imprimeRespondemQuestoes());
 					break;
 					
 				default:

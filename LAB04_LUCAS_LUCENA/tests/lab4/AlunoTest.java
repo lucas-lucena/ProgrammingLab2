@@ -30,9 +30,9 @@ public class AlunoTest {
 	
 	@Test
 	void toStringTest() {
-		assertEquals(a1.toString(), "Aluno: 123 - lucas - computacao");
-		assertEquals(a2.toString(), "Aluno: 321 - marcos - computacao");
-		assertEquals(a3.toString(), "Aluno: 123 - lucas - computacao");
+		assertEquals(a1.toString(), "123 - lucas - computacao");
+		assertEquals(a2.toString(), "321 - marcos - computacao");
+		assertEquals(a3.toString(), "123 - lucas - computacao");
 		
 	}
 	
@@ -45,7 +45,7 @@ public class AlunoTest {
 	}
 	
 	@Test
-	void EqualsTest() {
+	void equalsTest() {
 		Aluno a4 = new Aluno("321", "lucas", "computacao");
 		Aluno a5 = new Aluno("123", "marcos", "computacao");
 		Aluno a6 = new Aluno("123", "lucas", "civil");

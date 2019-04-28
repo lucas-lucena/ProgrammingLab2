@@ -16,15 +16,23 @@ public class Grupo {
 		this.alunosSet = new HashSet<>();
 	}
 	
-	public String AlocaAluno(Aluno aluno) {
+	public String alocaAluno(Aluno aluno) {
 		alunosSet.add(aluno);
 		return "ALUNO ALOCADO!"; 
 	}
 	
+	public HashSet<Aluno> getAlunosSet() {
+		return alunosSet;
+	}
+	
 	public String toString() {
 		String alunos = "Alunos do grupo "+	nome +":\n";
-		for (Aluno a: alunosSet) {
-			alunos += "* " + a.toString() + "\n"; 
+		if (!alunosSet.isEmpty()) {
+			for (Aluno a: alunosSet) {
+				alunos += "* Aluno: " + a.toString() + "\n"; 
+			}
+		} else {
+			alunos += "NENHUM ALUNO CADASTRADO AINDA!\n";
 		}
 		return alunos.trim();
 	}
@@ -47,18 +55,36 @@ public class Grupo {
 		if (getClass() != obj.getClass())
 			return false;
 		Grupo other = (Grupo) obj;
-		if (alunosSet == null) {
-			if (other.alunosSet != null)
+		if (!alunosSet.isEmpty()) {
+			if (!this.getAlunosSet().equals(other.getAlunosSet())) {
 				return false;
-		} else if (!alunosSet.equals(other.alunosSet))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+			}
+		} else return false;
+		if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -21,7 +21,16 @@ public class Controller {
 	}
 	
 	// 	METODOS ALUNO
-	public String CadastraAluno(String matricula, String nome, String curso) {
+	public String cadastraAluno(String matricula, String nome, String curso) {
+		if (matricula == null || matricula.equals("")) {
+			throw new IllegalArgumentException("MATRICULA NULA OU VAZIA");
+		}
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("NOME DO ALUNO NULO OU VAZIO");
+		}
+		if (curso == null || curso.equals("")) {
+			throw new IllegalArgumentException("NOME DO CUROSO NULO OU VAZIO");
+		}
 		
 		if  (mapaAlunos.containsKey(matricula)) {
 			return "\nMATRÍCULA JÁ CADASTRADA!\n";
@@ -33,10 +42,13 @@ public class Controller {
 		}
 	}
 	
-	public String ConsultaAluno(String matricula) {
+	public String consultaAluno(String matricula) {
+		if (matricula == null || matricula.equals("")) {
+			throw new IllegalArgumentException("MATRICULA NULA OU VAZIA!");
+		}
 		
 		if (mapaAlunos.containsKey(matricula)) {
-			return "\n" + mapaAlunos.get(matricula).toString() + "\n";
+			return "\nAluno: " + mapaAlunos.get(matricula).toString() + "\n";
 		}
 		else {
 			return "\nAluno não cadastrado.\n";
@@ -44,7 +56,11 @@ public class Controller {
 	}
 	
 	// 	METODOS GRUPOS
-	public String CadastraGrupo(String nomeGrupo) {
+	public String cadastraGrupo(String nomeGrupo) {
+		if (nomeGrupo == null || nomeGrupo.equals("")) {
+			throw new IllegalArgumentException("NOME DO GRUPO NULO OU VAZIO!");
+		}
+		
 		nomeGrupo = nomeGrupo.toLowerCase();
 		
 		if (mapaGrupos.containsKey(nomeGrupo)) {
@@ -57,7 +73,14 @@ public class Controller {
 		}
 	}
 	
-	public String AlocarAluno (String matricula, String nomeGrupo) {
+	public String alocarAluno (String matricula, String nomeGrupo) {
+		if (nomeGrupo == null || nomeGrupo.equals("")) {
+			throw new IllegalArgumentException("NOME DO GRUPO NULA OU VAZIA!");
+		}
+		if (matricula == null || matricula.equals("")) {
+			throw new IllegalArgumentException("MATRICULA NULA OU VAZIA!");
+		}
+		
 		nomeGrupo = nomeGrupo.toLowerCase();
 		
 		if (!mapaAlunos.containsKey(matricula)) {
@@ -67,17 +90,30 @@ public class Controller {
 			return "\nGrupo não cadastrado.\n";
 		}
 		else {
-			mapaGrupos.get(nomeGrupo).AlocaAluno(mapaAlunos.get(matricula));
+			mapaGrupos.get(nomeGrupo).alocaAluno(mapaAlunos.get(matricula));
 			return "\nALUNO ALOCADO!\n";
 		}
-	}
+	} 
 	
-	public String ImprimirGrupo (String nomeGrupo) {
-		return "\n" + mapaGrupos.get(nomeGrupo).toString() + "\n";
+	public String imprimirGrupo (String nomeGrupo) {
+		if (nomeGrupo == null || nomeGrupo.equals("")) {
+			throw new IllegalArgumentException("NOME DO GRUPO NULA OU VAZIA!");
+		}
+		
+		if (mapaGrupos.containsKey(nomeGrupo)) {
+			return "\n" + mapaGrupos.get(nomeGrupo).toString() + "\n";
+		} else {
+			return "GRUPO NÃO CADASTRADO!\n";
+		}
+	
 	}
 	
 	// QUADRO
-	public String CadastraRespondemQuestoes(String matricula) {
+	public String cadastraRespondemQuestoes(String matricula) {
+		if (matricula == null || matricula.equals("")) {
+			throw new IllegalArgumentException("MATRICULA NULA OU VAZIA!");
+		}
+		
 		if (!mapaAlunos.containsKey(matricula)) {
 			return "\nAluno não cadastrado.\n";
 		}
@@ -86,7 +122,7 @@ public class Controller {
 		return "\nALUNO REGISTRADO!\n";
 	}
 	
-	public String ImprimeRespondemQuestoes ( ) {
+	public String imprimeRespondemQuestoes ( ) {
 		if (respondemQuestoes.equals("")) {
 			return "\nNENHUM ALUNO RESPONDEU QUESTÕES NO QUADRO\n";
 		}
@@ -95,3 +131,31 @@ public class Controller {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
