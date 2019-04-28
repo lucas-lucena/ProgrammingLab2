@@ -1,11 +1,37 @@
 package lab4;
 
+/**
+ * A representação de um aluno. Todo aluno conta com um nome,
+ * matrícula e um curso.
+ * 
+ * @author lucas-lucena
+ *
+ */
+
 public class Aluno {
 
+	/** 
+	 * Matrícula do aluno.
+	 */
 	private String matricula;
+	
+	/** 
+	 * Nome do aluno.
+	 */
 	private String nome;
+	
+	/** 
+	 * Curso do aluno.
+	 */
 	private String curso;
 
+	/**
+	 * Constroi o aluno com matrícula, nome e curso.
+	 * 
+	 * @param matricula
+	 * @param nome
+	 * @param curso
+	 */
 	public Aluno(String matricula, String nome, String curso) {
 		if (matricula == null || matricula.equals("")) {
 			throw new IllegalArgumentException("MATRICULA NULA OU VAZIA");
@@ -16,18 +42,25 @@ public class Aluno {
 		if (curso == null || curso.equals("")) {
 			throw new IllegalArgumentException("NOME DO CUROSO NULO OU VAZIO");
 		}
-
+ 
 		this.matricula = matricula;
 		this.nome = nome;
 		this.curso = curso;	
 	}
-	
+
+	/**
+	 * Restorna representação em String do Aluno seguindo o modelo:
+	 * "MATRICULA - NOME- CURSO".
+	 */
 	public String toString() {
 		return this.matricula +
 				" - " + this.nome +
 				" - " + this.curso;
 	}
 
+	/**
+	 * Cria um código hash para a Agenda.
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -38,6 +71,10 @@ public class Aluno {
 		return result;
 	}
 
+	/**
+	 * Verifica se dois objetos Aluno são iguais, com base na matrícula,
+	 * do nome e do curso.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -47,11 +84,11 @@ public class Aluno {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluno other = (Aluno) obj;
-		if (!curso.equals(other.curso))
-			return false;
 		if (!matricula.equals(other.matricula))
 			return false;
 		if (!nome.equals(other.nome))
+			return false;
+		if (!curso.equals(other.curso))
 			return false;
 		return true;
 	}

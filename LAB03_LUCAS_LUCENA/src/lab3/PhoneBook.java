@@ -25,7 +25,7 @@ public class PhoneBook {
 	 * registro, se for validado, retornará que o cadastro foi realizado, caso
 	 * não seja válido, vai retornar que a posição foi inválida se estiver fora do
 	 * intervalo pré-definido, ou vai informar se algum dos atributos do contato
-	 * sõ invalidos se forem nulos ou espaços em branco. 
+	 * sõ invalidos se forem nulos ou espaços em branco.
 	 * 
 	 * @param position
 	 * @param firstName
@@ -66,7 +66,7 @@ public class PhoneBook {
 			return "NENHUM CONTATO FOI REGISTRADO\n";
 		}
 	}
- 
+
 	/**
 	 * Retorna a representação em String de um contato contido em uma
 	 * determinada posição da agenda. Também retorna uma String que
@@ -86,6 +86,7 @@ public class PhoneBook {
 			return "POSIÇÃO INVÁLIDA!";
 		}
 	}
+
 	/**
 	 * Retorna uma String informando se os nomes de dois contatos, em
 	 * posições distintas da lista, são da mesma pessoa.
@@ -102,7 +103,7 @@ public class PhoneBook {
 			return "NÃO SOU EU!\n";
 		}
 	}
-	
+
 	/**
 	 * Cria um código hash para a Agenda.
 	 */

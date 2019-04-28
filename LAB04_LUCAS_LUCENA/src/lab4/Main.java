@@ -6,6 +6,7 @@ public class Main {
 	public static void main (String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
+		/** Controlador dos alunos e grupos */ 
 		Controller controller = new Controller();
 		
 		/** Matricula atribuida a um aluno. */
@@ -50,7 +51,9 @@ public class Main {
 					System.out.print("Curso: ");
 					curso = scanner.nextLine();
 					
-					/** Cadastra um aluno e informa se aquela matricula já foi cadastrada. */
+					/** Cadastra um aluno e informa se aquela matricula já foi cadastrada
+					 * ou se e invalida. 
+					 */
 					System.out.println(controller.cadastraAluno(matricula, aluno, curso));
 
 					break;

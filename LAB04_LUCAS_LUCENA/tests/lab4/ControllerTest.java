@@ -69,7 +69,7 @@ public class ControllerTest {
 		c.alocarAluno("123", "projeto");
 		assertEquals(c.imprimirGrupo("projeto"), "\nAlunos do grupo projeto:\n* Aluno: 123 - lucas - computação\n");
 		
-		assertEquals(c.imprimirGrupo("estudos"), "GRUPO NÃO CADASTRADO!\n");
+		assertEquals(c.imprimirGrupo("estudos"), "\nGRUPO NÃO CADASTRADO!\n");
 		
 		assertThrows(IllegalArgumentException.class, ()-> c.imprimirGrupo(""));
 		assertThrows(IllegalArgumentException.class, ()-> c.imprimirGrupo(null));
