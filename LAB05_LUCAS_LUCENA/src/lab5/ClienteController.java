@@ -14,7 +14,15 @@ public class ClienteController {
 	}
 	
 	/**
-	 * Cadastra um Clientes.
+	 * Cadastra um Cliente no mapa de clientes passando uma String cpf 
+	 * como identificador, e vai receber Strings representando
+	 * um cpf, nome, local associado e email do respectivo cliente.
+	 * 
+	 * @param cpf
+	 * @param nome
+	 * @param local
+	 * @param email
+	 * @return
 	 */
 	public String CadastraClientes(String cpf, String nome, String local, String email) {
 		if (cpf == null || cpf.equals("")) {

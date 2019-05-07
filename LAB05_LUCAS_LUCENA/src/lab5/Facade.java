@@ -7,7 +7,14 @@ public class Facade {
 	ClienteController cc = new ClienteController();
 	
 	/**
-	 * Cadastra Clientes
+	 * Cadastra um Cliente no sistema, e vai receber Strings representando
+	 * um cpf, nome, local associado e email do respectivo cliente 
+	 * 
+	 * @param cpf
+	 * @param nome
+	 * @param local
+	 * @param email
+	 * @return Situação do cadastro do Cliente
 	 */
 	public String CadastraCLiente(String cpf, String nome, String local, String email) {
 		return cc.CadastraClientes(cpf, nome, local, email);
