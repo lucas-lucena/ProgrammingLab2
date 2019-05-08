@@ -129,6 +129,10 @@ public class Facade {
 	/**
 	 * Cadastra um produto para um Fornecedor.
 	 */ // apagar nota verde assim que refatorar
+	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		return fc.CadastraProduto(nomeFornecedor, nomeProduto, descricao, preco);
+	}
+	
 
 	/**
 	 * Retorna a representação textual de um produto de um Fornecedor NOME -

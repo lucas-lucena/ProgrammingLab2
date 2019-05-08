@@ -1,5 +1,8 @@
 package lab5;
 
+import java.lang.reflect.Array;
+import java.util.HashMap;
+
 public class Fornecedor {
 	/**
 	 * Nome do Fornecedor.
@@ -15,7 +18,9 @@ public class Fornecedor {
 	 * Telefone do Fornecedor.
 	 */
 	private String telefone;
-
+	
+	private HashMap<String, Produto> mapaProdutos;
+	
 	/**
 	 * Constroi um objeto Fornecedor que tem como atributos as Strings nome, email e
 	 * telefone que estão associados ao Fornecedor.
@@ -25,23 +30,61 @@ public class Fornecedor {
 	 * @param telefone
 	 */
 	public Fornecedor(String nome, String email, String telefone) {
-		super();
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+		}
+		if (email == null || email.equals("")) {
+			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+		}
+		if (telefone == null || telefone.equals("")) {
+			throw new IllegalArgumentException("TELEFONE NULO OU STRING VAZIA!");
+		}
+
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
+		this.mapaProdutos = new HashMap<>();
 	}
 
 	/**
-	 * Retorna a representação em String de um Fornecedor seguindo o modelo: "NOME -
-	 * EMAIL - TELEFONE"
+	 * Retorna a representação em String de um Fornecedor seguindo o modelo: 
+	 * "NOME - EMAIL - TELEFONE"
 	 * 
 	 * @return
 	 */
 	@Override
 	public String toString() {
-		return "Fornecedor [nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+		return nome + ", - " + email + " - " + telefone;
 	}
-
+	
+	// Operações referentes a produto. // apagar nota verde assim que refatorar
+	
+	/**
+	 * 
+	 * @param nome
+	 * @param descricao
+	 * @param preco
+	 * @return
+	 */ // apagar nota verde assim que refatorar
+	public String CadastraProduto(String nome, String descricao, double preco) {
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+		
+		String idProduto = nome + descricao;
+		if (!mapaProdutos.containsKey(idProduto)) {
+			Produto p = new Produto(nome, descricao, preco);
+			mapaProdutos.put(idProduto, p);
+			return "CADASTRO BEM SUCEDIDO!";
+		}
+		return "PRODUTO JÁ CADASTRADO!";
+		
+	}
+	
+	// Outros métodos de Fornecedor // apagar nota verde assim que refatorar
 	public String getEmail() {
 		return email;
 	}

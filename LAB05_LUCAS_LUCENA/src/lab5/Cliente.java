@@ -51,8 +51,8 @@ public class Cliente {
 	}
 
 	/**
-	 * Retorna a representação em String de um Cliente seguindo o modelo: "NOME -
-	 * LOCAL - EMAIL"
+	 * Retorna a representação em String de um Cliente seguindo o modelo: 
+	 * "NOME - LOCAL - EMAIL"
 	 * 
 	 * @return Representação em string do Cliente.
 	 */

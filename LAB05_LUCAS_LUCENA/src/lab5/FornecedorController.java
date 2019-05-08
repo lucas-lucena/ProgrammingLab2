@@ -192,4 +192,32 @@ public class FornecedorController {
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
+	
+	/**
+	 * 
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @param preco
+	 * @return
+	 */ // apagar nota verde assim que refatorar
+	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+		}
+		if (nomeProduto == nomeProduto || nome.equals("")) {
+			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+		
+		if (mapaFornecedores.containsKey(nomeFornecedor)) {
+			return mapaFornecedores.get(nomeFornecedor).CadastraProduto(nomeProduto, descricao, preco);
+		}
+		return "FORNECEDOR NÃO CADASTRADO!";
+	}
+	
+	
 }
