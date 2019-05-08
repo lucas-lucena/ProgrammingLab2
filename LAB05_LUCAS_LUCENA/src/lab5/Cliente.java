@@ -22,7 +22,9 @@ public class Cliente {
 	private String email;
 	
 	/**
-	 * Constroi um objeto cliente, com cpf, nome, um local e um email.
+	 * Constroi um objeto Cliente, que tenha como atributos as Strings que 
+	 * representam o cpf, nome, um local e um email que estão associados ao
+	 * Cliente.
 	 * 
 	 * @param cpf
 	 * @param nome
@@ -52,6 +54,8 @@ public class Cliente {
 	/**
 	 * Retorna a representação em String de um cliente seguindo o modelo:
 	 * "NOME - LOCAL - EMAIL"
+	 * 
+	 * @return Representação em string do Cliente.
 	 */
 	public String toString() {
 		return this.nome + " - " + this.local + " - " + this.email;
