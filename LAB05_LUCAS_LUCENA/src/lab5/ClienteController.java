@@ -40,26 +40,29 @@ public class ClienteController {
 	 * @param email
 	 * @return String representando a situação do cadastro do Cliente.
 	 */
-	public String CadastraClientes(String cpf, String nome, String local, String email) {
+	public String cadastraClientes(String cpf, String nome, String email, String local) {
 		if (cpf == null || cpf.equals("")) {
 			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
 		}
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do cliente: nome nao pode ser vazio ou nulo.");
 		}
 		if (local == null || local.equals("")) {
-			throw new IllegalArgumentException("LOCAL NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do cliente: localizacao nao pode ser vazia ou nula.");
 		}
 		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do cliente: email nao pode ser vazio ou nulo.");
 		}
 
 		if (!mapaClientes.containsKey(cpf)) {
 			Cliente c = new Cliente(cpf, nome, local, email);
 			mapaClientes.put(cpf, c);
-			return "CADASTRO BEM SUCEDIDO!";
+			return cpf;
 		}
-		return "CLIENTE JÁ CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro no cadastro do cliente: cliente ja existe.");
+		}
+		
 	}
 
 	/**
@@ -83,7 +86,7 @@ public class ClienteController {
 	 * @param cpf
 	 * @return Representação em string do Cliente.
 	 */
-	public String ExibeCliente(String cpf) {
+	public String exibeCliente(String cpf) {
 		if (cpf == null || cpf.equals("")) {
 			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
 		}
@@ -109,7 +112,7 @@ public class ClienteController {
 	 * 
 	 * @return String representando todos os Clientes cadastrados.
 	 */
-	public String ExibeTodosOsClientes() {
+	public String exibeTodosOsClientes() {
 
 		ArrayList<String> Clientes = new ArrayList<>();
 		for (Cliente Cliente : this.mapaClientes.values()) {
@@ -147,7 +150,7 @@ public class ClienteController {
 	 * @param email
 	 * @return Situação da edição de um Cliente.
 	 */
-	public String EditaCliente(String cpf, String nome, String local, String email) {
+	public String editaCliente(String cpf, String nome, String local, String email) {
 		if (cpf == null || cpf.equals("")) {
 			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
 		}
@@ -191,7 +194,7 @@ public class ClienteController {
 	 * @param cpf
 	 * @return Situação da remoção de um Cliente.
 	 */
-	public String RemoverCliente(String cpf) {
+	public String removerCliente(String cpf) {
 		if (cpf == null || cpf.equals("")) {
 			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
 		}

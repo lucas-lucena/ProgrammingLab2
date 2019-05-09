@@ -1,5 +1,7 @@
 package lab5;
 
+import easyaccept.EasyAccept;
+
 public class Facade {
 
 	// Operações com Clientes.
@@ -16,8 +18,8 @@ public class Facade {
 	 * @param email
 	 * @return String representando a situação do cadastro do Cliente.
 	 */
-	public String CadastraCLiente(String cpf, String nome, String local, String email) {
-		return cc.CadastraClientes(cpf, nome, local, email);
+	public String adicionaCliente(String cpf, String nome, String local, String email) {
+		return cc.cadastraClientes(cpf, nome, local, email);
 	}
 
 	/**
@@ -27,8 +29,8 @@ public class Facade {
 	 * @param cpf
 	 * @return String representando um Cliente.
 	 */
-	public String ExibeCliente(String cpf) {
-		return cc.ExibeCliente(cpf);
+	public String exibeCliente(String cpf) {
+		return cc.exibeCliente(cpf);
 	}
 
 	/**
@@ -37,8 +39,8 @@ public class Facade {
 	 * 
 	 * @return String representando todos os Clientes cadastrados.
 	 */
-	public String ExibeTodosOsClientes() {
-		return cc.ExibeTodosOsClientes();
+	public String exibeTodosOsClientes() {
+		return cc.exibeTodosOsClientes();
 	}
 
 	/**
@@ -51,8 +53,8 @@ public class Facade {
 	 * @param email
 	 * @return Situação da edição do Cliente.
 	 */
-	public String EditaCliente(String cpf, String nome, String local, String email) {
-		return cc.EditaCliente(cpf, nome, local, email);
+	public String editaCliente(String cpf, String nome, String local, String email) {
+		return cc.editaCliente(cpf, nome, local, email);
 	}
 
 	/**
@@ -61,8 +63,8 @@ public class Facade {
 	 * @param cpf
 	 * @return Situação da remoção do Cliente.
 	 */
-	public String RemoveCliente(String cpf) {
-		return cc.RemoverCliente(cpf);
+	public String removeCliente(String cpf) {
+		return cc.removerCliente(cpf);
 	}
 
 	// Operações com Forencedores.
@@ -78,8 +80,8 @@ public class Facade {
 	 * @param telefone
 	 * @return String representando a situação do cadastro do Fornecedor.
 	 */
-	public String CadastraFornecedor(String nome, String email, String telefone) {
-		return fc.CadastraFornecedor(nome, email, telefone);
+	public String cadastraFornecedor(String nome, String email, String telefone) {
+		return fc.cadastraFornecedor(nome, email, telefone);
 	}
 
 	/**
@@ -89,8 +91,8 @@ public class Facade {
 	 * @param nome
 	 * @return String representando um Fornecedor.
 	 */
-	public String ExibeFornecedor(String nome) {
-		return fc.ExibeFornecedor(nome);
+	public String exibeFornecedor(String nome) {
+		return fc.exibeFornecedor(nome);
 	}
 
 	/**
@@ -99,8 +101,8 @@ public class Facade {
 	 * 
 	 * @return String representando todos os Fornecedores cadastrados.
 	 */
-	public String ExibeTodosOsFornecedores() {
-		return fc.ExibeTodosOsFornecedores();
+	public String exibeTodosOsFornecedores() {
+		return fc.exibeTodosOsFornecedores();
 	}
 
 	/**
@@ -112,8 +114,8 @@ public class Facade {
 	 * @param telefone
 	 * @return Situação da edição do Fornecedor.
 	 */
-	public String EditaFornecedor(String nome, String email, String telefone) {
-		return fc.EditaFornecedor(nome, email, telefone);
+	public String editaFornecedor(String nome, String email, String telefone) {
+		return fc.editaFornecedor(nome, email, telefone);
 	}
 
 	/**
@@ -122,8 +124,8 @@ public class Facade {
 	 * @param nome
 	 * @return Situação da remoção do Fornecedor.
 	 */
-	public String RemoveFornecedor(String nome) {
-		return fc.RemoverFornecedor(nome);
+	public String removeFornecedor(String nome) {
+		return fc.removerFornecedor(nome);
 	}
 
 	// Operações com Produtos dos Fornecedores.
@@ -139,8 +141,8 @@ public class Facade {
 	 * @param preco
 	 * @return String representando a situação do cadastro do Produto.
 	 */
-	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
-		return fc.CadastraProduto(nomeFornecedor, nomeProduto, descricao, preco);
+	public String cadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		return fc.cadastraProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
 
 	/**
@@ -151,8 +153,8 @@ public class Facade {
 	 * @param descricao
 	 * @return Representação em String de um Produto.
 	 */
-	public String ExibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
-		return fc.ExibeProduto(nomeFornecedor, nomeProduto, descricao);
+	public String exibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		return fc.exibeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 
 	/**
@@ -163,8 +165,8 @@ public class Facade {
 	 * @return Representação em String de todos os Produtos associados a um
 	 *         Fornecedor
 	 */
-	public String ExibeProdutosDoFornecedor(String nomeFornecedor) {
-		return fc.ExibeProdutosDoFornecedor(nomeFornecedor);
+	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
+		return fc.exibeProdutosDoFornecedor(nomeFornecedor);
 	}
 
 	/**
@@ -173,8 +175,8 @@ public class Facade {
 	 * 
 	 * @return Representação em String de todos os Produtos cadastrados no sistema.
 	 */
-	public String ExibeTodosOsProdutos() {
-		return fc.ExibeTodosOsFornecedores();
+	public String exibeTodosOsProdutos() {
+		return fc.exibeTodosOsFornecedores();
 	}
 
 	/**
@@ -188,8 +190,8 @@ public class Facade {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String EditaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
-		return fc.EditaProduto(nomeFornecedor, nomeProduto, descricao, preco);
+	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		return fc.editaProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
 
 	/**
@@ -202,7 +204,13 @@ public class Facade {
 	 * @param descricao
 	 * @return Situação da remoção do Produto de um Fornecedor.
 	 */
-	public String RemoveProduto(String nomeFornecedor, String nomeProduto, String descricao) {
-		return fc.RemoveProduto(nomeFornecedor, nomeProduto, descricao);
+	public String removeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
+	}
+	
+	// Easy Accept
+	public static void main(String[] args) {
+		args = new String[] {"lab5.Facade", "acceptance_test/use_case_1.txt"};
+			EasyAccept.main(args);
 	}
 }

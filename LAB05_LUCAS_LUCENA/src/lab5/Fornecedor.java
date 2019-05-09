@@ -85,7 +85,7 @@ public class Fornecedor {
 	 * @param preco
 	 * @return Situação do cadastro de um Produto.
 	 */
-	public String CadastraProduto(String nome, String descricao, double preco) {
+	public String cadastraProduto(String nome, String descricao, double preco) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -127,7 +127,7 @@ public class Fornecedor {
 	 * @param descricao
 	 * @return Representação em String de um Produto.
 	 */
-	public String ExibeProduto(String nome, String descricao) {
+	public String exibeProduto(String nome, String descricao) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -157,7 +157,7 @@ public class Fornecedor {
 	 * 
 	 * @return Representa todos os Produtos de um Fornecedor.
 	 */
-	public String ExibeProdutosDoFornecedor() {
+	public String exibeProdutosDoFornecedor() {
 		ArrayList<String> Produtos = new ArrayList<>();
 		for (Produto Produto : this.mapaProdutos.values()) {
 			Produtos.add(this.nome + " - " + Produto.toString());
@@ -193,7 +193,7 @@ public class Fornecedor {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String EditaProduto(String nome, String descricao, double preco) {
+	public String editaProduto(String nome, String descricao, double preco) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -230,7 +230,7 @@ public class Fornecedor {
 	 * @param descricao
 	 * @return Situação da remoção de um Produto.
 	 */
-	public String RemoveProduto(String nome, String descricao) {
+	public String removeProduto(String nome, String descricao) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}

@@ -39,7 +39,7 @@ public class FornecedorController {
 	 * @param telefone
 	 * @return String representando a situação do cadastro do Fornecedor.
 	 */
-	public String CadastraFornecedor(String nome, String email, String telefone) {
+	public String cadastraFornecedor(String nome, String email, String telefone) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -80,7 +80,7 @@ public class FornecedorController {
 	 * @param nome
 	 * @return Representação em string do Fornecedor.
 	 */
-	public String ExibeFornecedor(String nome) {
+	public String exibeFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -106,7 +106,7 @@ public class FornecedorController {
 	 * 
 	 * @return String representando todos os Fornecedores cadastrados.
 	 */
-	public String ExibeTodosOsFornecedores() {
+	public String exibeTodosOsFornecedores() {
 
 		ArrayList<String> Fornecedores = new ArrayList<>();
 		for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
@@ -143,7 +143,7 @@ public class FornecedorController {
 	 * @param telefone
 	 * @return Situação da edição de um Fornecedor.
 	 */
-	public String EditaFornecedor(String nome, String email, String telefone) {
+	public String editaFornecedor(String nome, String email, String telefone) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -182,7 +182,7 @@ public class FornecedorController {
 	 * @param nome
 	 * @return Situação da remoção de um Fornecedor.
 	 */
-	public String RemoverFornecedor(String nome) {
+	public String removerFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("nome NULO OU STRING VAZIA!");
 		}
@@ -217,7 +217,7 @@ public class FornecedorController {
 	 * @param preco
 	 * @return Situação do Cadastro de um Produto.
 	 */
-	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String cadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
@@ -229,7 +229,7 @@ public class FornecedorController {
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).CadastraProduto(nomeProduto, descricao, preco);
+			return mapaFornecedores.get(nomeFornecedor).cadastraProduto(nomeProduto, descricao, preco);
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
@@ -257,7 +257,7 @@ public class FornecedorController {
 	 * @param descricao
 	 * @return Representação em String de um Produto.
 	 */
-	public String ExibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+	public String exibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
@@ -269,7 +269,7 @@ public class FornecedorController {
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).ExibeProduto(nomeProduto, descricao);
+			return mapaFornecedores.get(nomeFornecedor).exibeProduto(nomeProduto, descricao);
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
@@ -295,13 +295,13 @@ public class FornecedorController {
 	 * @return Representação em String de todos os Produtos associados a um
 	 *         Fornecedor
 	 */
-	public String ExibeProdutosDoFornecedor(String nomeFornecedor) {
+	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).ExibeProdutosDoFornecedor();
+			return mapaFornecedores.get(nomeFornecedor).toString();
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
@@ -320,10 +320,10 @@ public class FornecedorController {
 	 * 
 	 * @return Representação em String de todos os Produtos cadastrados no sistema.
 	 */
-	public String ExibeTodosOsProdutos() {
+	public String exibeTodosOsProdutos() {
 		ArrayList<String> Fornecedores = new ArrayList<>();
 		for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
-			Fornecedores.add(Fornecedor.ExibeProdutosDoFornecedor()); // maybe .trim()
+			Fornecedores.add(Fornecedor.exibeProdutosDoFornecedor());
 		}
 		if (!Fornecedores.isEmpty()) {
 			Collections.sort(Fornecedores);
@@ -359,7 +359,7 @@ public class FornecedorController {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String EditaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
@@ -371,7 +371,7 @@ public class FornecedorController {
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).EditaProduto(nomeProduto, descricao, preco);
+			return mapaFornecedores.get(nomeFornecedor).editaProduto(nomeProduto, descricao, preco);
 		}
 		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
 	}
@@ -401,7 +401,7 @@ public class FornecedorController {
 	 * @param descricao
 	 * @return Situação da remoção de um Produto
 	 */
-	public String RemoveProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+	public String removeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
@@ -413,9 +413,8 @@ public class FornecedorController {
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).RemoveProduto(nomeProduto, descricao);
+			return mapaFornecedores.get(nomeFornecedor).removeProduto(nomeProduto, descricao);
 		}
 		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
-
 	}
 }
