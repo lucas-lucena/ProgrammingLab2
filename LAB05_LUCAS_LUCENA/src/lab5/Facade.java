@@ -2,7 +2,7 @@ package lab5;
 
 public class Facade {
 
-	// Operações com Clientes
+	// Operações com Clientes.
 
 	private ClienteController cc = new ClienteController();
 
@@ -126,7 +126,7 @@ public class Facade {
 		return fc.RemoverFornecedor(nome);
 	}
 
-	// Operações com Produtos dos Fornecedores //
+	// Operações com Produtos dos Fornecedores.
 
 	/**
 	 * Cadastra um Produto no sistema e o relaciona com um Fornecedor. Este método

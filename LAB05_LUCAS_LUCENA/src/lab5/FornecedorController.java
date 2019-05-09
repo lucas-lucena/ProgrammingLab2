@@ -38,7 +38,7 @@ public class FornecedorController {
 	 * @param email
 	 * @param telefone
 	 * @return String representando a situação do cadastro do Fornecedor.
-	 */ // apagar nota verde assim que refatorar
+	 */
 	public String CadastraFornecedor(String nome, String email, String telefone) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
@@ -216,7 +216,7 @@ public class FornecedorController {
 	 * @param descricao
 	 * @param preco
 	 * @return Situação do Cadastro de um Produto.
-	 */ // apagar nota verde assim que refatorar
+	 */
 	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");

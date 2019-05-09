@@ -84,7 +84,7 @@ public class Fornecedor {
 	 * @param descricao
 	 * @param preco
 	 * @return Situação do cadastro de um Produto.
-	 */ // apagar nota verde assim que refatorar
+	 */
 	public String CadastraProduto(String nome, String descricao, double preco) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
