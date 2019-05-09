@@ -30,18 +30,18 @@ public class Cliente {
 	 * @param local
 	 * @param email
 	 */
-	public Cliente(String cpf, String nome, String local, String email) {
+	public Cliente(String cpf, String nome, String email, String local) {
 		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
 		}
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
-		if (local == null || local.equals("")) {
-			throw new IllegalArgumentException("LOCAL NULO OU STRING VAZIA!");
-		}
 		if (email == null || email.equals("")) {
 			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+		}
+		if (local == null || local.equals("")) {
+			throw new IllegalArgumentException("LOCAL NULO OU STRING VAZIA!");
 		}
 
 		this.cpf = cpf;
@@ -57,7 +57,7 @@ public class Cliente {
 	 * @return Representação em string do Cliente.
 	 */
 	public String toString() {
-		return this.nome + " - " + this.local + " - " + this.email;
+		return nome + " - " + local + " - " + email;
 	}
 
 	public String getNome() {

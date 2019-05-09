@@ -41,8 +41,8 @@ public class ClienteController {
 	 * @return String representando a situação do cadastro do Cliente.
 	 */
 	public String cadastraClientes(String cpf, String nome, String email, String local) {
-		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
+		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
 		}
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: nome nao pode ser vazio ou nulo.");
@@ -55,7 +55,7 @@ public class ClienteController {
 		}
 
 		if (!mapaClientes.containsKey(cpf)) {
-			Cliente c = new Cliente(cpf, nome, local, email);
+			Cliente c = new Cliente(cpf, nome, email, local);
 			mapaClientes.put(cpf, c);
 			return cpf;
 		}
@@ -87,16 +87,18 @@ public class ClienteController {
 	 * @return Representação em string do Cliente.
 	 */
 	public String exibeCliente(String cpf) {
-		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
+		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
 		}
 
 		if (mapaClientes.containsKey(cpf)) {
 			return mapaClientes.get(cpf).toString();
 		}
-		return "CLIENTE NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao do cliente: cliente nao existe.");
+		}
 	}
-
+	
 	/**
 	 * Retornar a representação em String de todos os Clientes cadastrados no
 	 * sistema em ordem alfabetica e separando-os com "|". Além disso, esté método
@@ -150,28 +152,35 @@ public class ClienteController {
 	 * @param email
 	 * @return Situação da edição de um Cliente.
 	 */
-	public String editaCliente(String cpf, String nome, String local, String email) {
-		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
+	public String editaCliente(String cpf, String atributo, String novoValor) {
+		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: cpf invalido.");
 		}
-		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+		if (atributo == null || atributo.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
 		}
-		if (local == null || local.equals("")) {
-			throw new IllegalArgumentException("LOCAL NULO OU STRING VAZIA!");
+		if (!atributo.equals("nome") && !atributo.equals("email") && !atributo.equals("localizacao")) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao existe.");
 		}
-		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+		if (novoValor == null || novoValor.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: novo valor nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaClientes.containsKey(cpf)) {
-			this.mapaClientes.get(cpf).setNome(nome);
-			this.mapaClientes.get(cpf).setLocal(local);
-			this.mapaClientes.get(cpf).setEmail(email);
+			if (atributo.equals("nome")) {
+				this.mapaClientes.get(cpf).setNome(novoValor);				
+			}
+			else if (atributo.equals("localizacao")) {
+				this.mapaClientes.get(cpf).setLocal(novoValor);				
+			}
+			else if (atributo.equals("email")) {
+				this.mapaClientes.get(cpf).setEmail(novoValor);				
+			}
 			return "EDIÇÃO BEM SUCESSIDA";
 		}
-
-		return "EDIÇÃO MAL SUCESSIDA";
+		else {
+			throw new IllegalArgumentException("Erro na edicao do cliente: cliente nao existe.");
+		}
 	}
 
 	/**

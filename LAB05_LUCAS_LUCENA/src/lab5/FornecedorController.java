@@ -41,10 +41,10 @@ public class FornecedorController {
 	 */
 	public String cadastraFornecedor(String nome, String email, String telefone) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do fornecedor: nome nao pode ser vazio ou nulo.");
 		}
 		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do fornecedor: email nao pode ser vazio ou nulo.");
 		}
 		if (telefone == null || telefone.equals("")) {
 			throw new IllegalArgumentException("TELEFONE NULO OU STRING VAZIA!");

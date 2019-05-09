@@ -7,19 +7,27 @@ public class Facade {
 	// Operações com Clientes.
 
 	private ClienteController cc = new ClienteController();
+	private FornecedorController fc = new FornecedorController();
 
+	// EasyAccept
+	public static void main(String[] args) {
+		args = new String[] {"lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt", "acceptance_test/use_case_3.txt"};
+		EasyAccept.main(args);
+	}
+	
+	
 	/**
 	 * Cadastra um Cliente no sistema, este método vai receber Strings representando
 	 * respectivamente, o cpf, nome, local associado e email do cliente.
 	 * 
 	 * @param cpf
 	 * @param nome
-	 * @param local
 	 * @param email
+	 * @param local
 	 * @return String representando a situação do cadastro do Cliente.
 	 */
-	public String adicionaCliente(String cpf, String nome, String local, String email) {
-		return cc.cadastraClientes(cpf, nome, local, email);
+	public String adicionaCliente(String cpf, String nome, String email, String local) {
+		return cc.cadastraClientes(cpf, nome, email, local);
 	}
 
 	/**
@@ -48,13 +56,12 @@ public class Facade {
 	 * informação que não pode ser alterada) passado como parâmetro.
 	 * 
 	 * @param cpf
-	 * @param nome
-	 * @param local
-	 * @param email
+	 * @param atributo
+	 * @param novoValor
 	 * @return Situação da edição do Cliente.
 	 */
-	public String editaCliente(String cpf, String nome, String local, String email) {
-		return cc.editaCliente(cpf, nome, local, email);
+	public String editaCliente(String cpf, String atributo, String novoValor) {
+		return cc.editaCliente(cpf, atributo, novoValor);
 	}
 
 	/**
@@ -67,9 +74,8 @@ public class Facade {
 		return cc.removerCliente(cpf);
 	}
 
+	
 	// Operações com Forencedores.
-
-	private FornecedorController fc = new FornecedorController();
 
 	/**
 	 * Cadastra um Fornecedor no sistema, este método vai receber Strings
@@ -80,7 +86,7 @@ public class Facade {
 	 * @param telefone
 	 * @return String representando a situação do cadastro do Fornecedor.
 	 */
-	public String cadastraFornecedor(String nome, String email, String telefone) {
+	public String adicionaFornecedor(String nome, String email, String telefone) {
 		return fc.cadastraFornecedor(nome, email, telefone);
 	}
 
@@ -208,9 +214,4 @@ public class Facade {
 		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 	
-	// Easy Accept
-	public static void main(String[] args) {
-		args = new String[] {"lab5.Facade", "acceptance_test/use_case_1.txt"};
-			EasyAccept.main(args);
-	}
 }
