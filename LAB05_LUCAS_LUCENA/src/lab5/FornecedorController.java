@@ -27,12 +27,12 @@ public class FornecedorController {
 	 * tendo os possíveis casos de retorno:
 	 * 
 	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
-	 * mapa de clientes igual ao nome passado como parâmetro), retornará uma String
-	 * informando que o cadastro foi bem sucedido.
+	 * mapa de Fornecedores igual ao nome passado como parâmetro), retornará uma
+	 * String informando que o cadastro foi bem sucedido.
 	 * 
 	 * Caso o Fornecedor já tenha sido cadastrado (já exista um identificador em
-	 * mapa de clientes igual ao nome passado como parâmetro), retornará uma String
-	 * informando que o Fornecedor já foi cadastrado.
+	 * mapa de Fornecedores igual ao nome passado como parâmetro), retornará uma
+	 * String informando que o Fornecedor já tinha sido cadastrado anteriormente.
 	 * 
 	 * @param nome
 	 * @param email
@@ -93,7 +93,7 @@ public class FornecedorController {
 
 	/**
 	 * Retornar a representação em String de todos os Fornecedores cadastrados no
-	 * sistema em ordem alfabetica e separando-os com "|". Além disso, esté método
+	 * sistema em ordem alfabetica e separando-os com "|". Além disso, este método
 	 * também verifica se no sistema não existe nenhum Fornecedor cadastrado, tendo
 	 * os possíveis casos de retorno.
 	 * 
@@ -141,7 +141,7 @@ public class FornecedorController {
 	 * @param nome
 	 * @param email
 	 * @param telefone
-	 * @returnSituação da edição de um Fornecedor.
+	 * @return Situação da edição de um Fornecedor.
 	 */
 	public String EditaFornecedor(String nome, String email, String telefone) {
 		if (nome == null || nome.equals("")) {
@@ -166,8 +166,8 @@ public class FornecedorController {
 	 * Remove um Fornecedor que tenha o identificador no mapa de Fornecedores igual
 	 * ao nome passado como parâmetro. Também irá verificar o uso de uma entrada
 	 * inválida como String vazia ou entrada nula, caso isto aconteça, será lançada
-	 * uma exceção de argumento ilegal e informando que o nome passado como parâmetro
-	 * é um argumento ilegal. Além disso, este método também verifica se o
+	 * uma exceção de argumento ilegal e informando que o nome passado como
+	 * parâmetro é um argumento ilegal. Além disso, este método também verifica se o
 	 * Fornecedor que está sendo removido existe, por meio de seu nome
 	 * (identificador único), tendo os possíveis casos de retorno:
 	 * 
@@ -192,32 +192,230 @@ public class FornecedorController {
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
-	
+
 	/**
+	 * Cadastra um Produto em um Fornecedor passando as seguintes Strings
+	 * representando, respetivamente, o nome do Fornecedor, e o nome, descrição e
+	 * preço do Produto. Também irá verificar o uso de entradas inválidas como
+	 * Strings vazias ou entradas nulas, caso isto aconteça, serão lançadas exceções
+	 * de argumento ilegal e informando o primeiro argumento ilegal passado como
+	 * parâmetro. Além disso, este método também verifica se o Fornecedor em que o
+	 * Produto está sendo associado existe, por meio de seu nome (identificador
+	 * único), tendo os possíveis casos de retorno:
 	 * 
+	 * Caso o Fornecedor tenha sido cadastrado (se existe um identificador em mapa
+	 * de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando a situação do cadastro do Produto.
+	 * 
+	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
+	 * mapa de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando que o Fornecedor não foi cadastrado.
 	 * 
 	 * @param nomeFornecedor
 	 * @param nomeProduto
 	 * @param descricao
 	 * @param preco
-	 * @return
+	 * @return Situação do Cadastro de um Produto.
 	 */ // apagar nota verde assim que refatorar
 	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}
-		if (nomeProduto == nomeProduto || nome.equals("")) {
+		if (nomeProduto == null || nomeProduto.equals("")) {
 			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
 		}
 		if (descricao == null || descricao.equals("")) {
 			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
 		}
-		
+
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).CadastraProduto(nomeProduto, descricao, preco);
 		}
 		return "FORNECEDOR NÃO CADASTRADO!";
 	}
-	
-	
+
+	/**
+	 * Retorna um Produto de um Fornecedor passando as seguintes Strings
+	 * representando, respetivamente, o nome do Fornecedor, e o nome e descrição do
+	 * Produto. Também irá verificar o uso de entradas inválidas como Strings vazias
+	 * ou entradas nulas, caso isto aconteça, serão lançadas exceções de argumento
+	 * ilegal e informando o primeiro argumento ilegal passado como parâmetro. Além
+	 * disso, este método também verifica se o Fornecedor em que o Produto está
+	 * sendo associado existe, por meio de seu nome (identificador único), tendo os
+	 * possíveis casos de retorno:
+	 * 
+	 * Caso o Fornecedor tenha sido cadastrado (se existe um identificador em mapa
+	 * de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String representando um Produto.
+	 * 
+	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
+	 * mapa de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando que o Fornecedor não foi cadastrado.
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @return Representação em String de um Produto.
+	 */
+	public String ExibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+		}
+		if (nomeProduto == null || nomeProduto.equals("")) {
+			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+
+		if (mapaFornecedores.containsKey(nomeFornecedor)) {
+			return mapaFornecedores.get(nomeFornecedor).ExibeProduto(nomeProduto, descricao);
+		}
+		return "FORNECEDOR NÃO CADASTRADO!";
+	}
+
+	/**
+	 * Retorna todos os Produtos de um Fornecedor passando uma String representando
+	 * o nome do Fornecedor. Também irá verificar o uso de entrada inválida como
+	 * String vazia ou entrada nula, caso isto aconteça, será lançada uma exceção de
+	 * argumento ilegal informando que o nome do Fornecedor passado como parâmetro é
+	 * um argumento ilegal. Além disso, este método também verifica se existe o
+	 * Fornecedor do qual o Produto é associado, por meio de seu nome (identificador
+	 * único), tendo os possíveis casos de retorno:
+	 * 
+	 * Caso o Fornecedor tenha sido cadastrado (se existe um identificador em mapa
+	 * de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String representando todos os Produtos.
+	 * 
+	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
+	 * mapa de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando que o Fornecedor não foi cadastrado.
+	 * 
+	 * @param nomeFornecedor
+	 * @return Representação em String de todos os Produtos associados a um
+	 *         Fornecedor
+	 */
+	public String ExibeProdutosDoFornecedor(String nomeFornecedor) {
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+		}
+
+		if (mapaFornecedores.containsKey(nomeFornecedor)) {
+			return mapaFornecedores.get(nomeFornecedor).ExibeProdutosDoFornecedor();
+		}
+		return "FORNECEDOR NÃO CADASTRADO!";
+	}
+
+	/**
+	 * Retorna uma String representando todos os Produtos cadastrados no sistema em
+	 * ordem alfabética e separando-os com o caractere "|". Além disso, este método
+	 * também verifica se existe algum Fornecedor cadastrado no sistema, tendo os
+	 * possíveis casos de retorno:
+	 * 
+	 * Caso algum Fornecedor tenha sido cadastrado, retornará uma String
+	 * representando todos os Produtos.
+	 * 
+	 * Caso nenhum Fornecedor tenha sido cadastrado, retornará uma String informando
+	 * que não há Fornecedor cadastrado.
+	 * 
+	 * @return Representação em String de todos os Produtos cadastrados no sistema.
+	 */
+	public String ExibeTodosOsProdutos() {
+		ArrayList<String> Fornecedores = new ArrayList<>();
+		for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
+			Fornecedores.add(Fornecedor.ExibeProdutosDoFornecedor()); // maybe .trim()
+		}
+		if (!Fornecedores.isEmpty()) {
+			Collections.sort(Fornecedores);
+			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+		}
+
+		return "NENHUM FORNECEDOR CADASTRADO!";
+	}
+
+	/**
+	 * Edita as informações de um Produto que esteja acossiado a um Fornecedor
+	 * identificado pelo nome de Fornecedor passado como parâmetro (está sendo a
+	 * unica informação que não pode ser alterada, por ser o identificador de um
+	 * Fornecedor no mapa de Fornecedores) além dos parâmetros referentes a nome,
+	 * descrição e preço do Produto. Também irá verificar o uso de entradas
+	 * inválidas como Strings vazias ou entradas nulas, caso isto aconteça, serão
+	 * lançadas exceções de argumento ilegal e informando o primeiro argumento
+	 * ilegal passado como parâmetro. Além disso, este método também verifica se o
+	 * Fornecedor associado ao Produto que está sendo editado existe, por meio de
+	 * seu nome (identificador único), tendo os possíveis casos de retorno:
+	 *
+	 * Caso o Fornecedor tenha sido cadastrado (se existe um identificador em mapa
+	 * de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String representando todos os Produtos.
+	 * 
+	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
+	 * mapa de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando que o Fornecedor não foi cadastrado.
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @param preco
+	 * @return Situação da edição de um Produto.
+	 */
+	public String EditaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+		}
+		if (nomeProduto == null || nomeProduto.equals("")) {
+			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+
+		if (mapaFornecedores.containsKey(nomeFornecedor)) {
+			return mapaFornecedores.get(nomeFornecedor).EditaProduto(nomeProduto, descricao, preco);
+		}
+		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
+	}
+
+	/**
+	 * Remove um Produto que esteja acossiado a um Fornecedor identificado pelo nome
+	 * de Fornecedor passado como parâmetro (está sendo a unica informação que não
+	 * pode ser alterada, por ser o identificador de um Fornecedor no mapa de
+	 * Fornecedores) além dos parâmetros referentes a nome e descrição do Produto.
+	 * Também irá verificar o uso de entradas inválidas como Strings vazias ou
+	 * entradas nulas, caso isto aconteça, serão lançadas exceções de argumento
+	 * ilegal e informando o primeiro argumento ilegal passado como parâmetro. Além
+	 * disso, este método também verifica se o Fornecedor associado ao Produto que
+	 * está sendo editado existe, por meio de seu nome (identificador único), tendo
+	 * os possíveis casos de retorno:
+	 *
+	 * Caso o Fornecedor tenha sido cadastrado (se existe um identificador em mapa
+	 * de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String representando todos os Produtos.
+	 * 
+	 * Caso o Fornecedor não tenha sido cadastrado (não exista um identificador em
+	 * mapa de Fornecedores igual ao nome de Fornecedor passado como parâmetro),
+	 * retornará uma String informando que o Fornecedor não foi cadastrado.
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @return Situação da remoção de um Produto
+	 */
+	public String RemoveProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+		}
+		if (nomeProduto == null || nomeProduto.equals("")) {
+			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+
+		if (mapaFornecedores.containsKey(nomeFornecedor)) {
+			return mapaFornecedores.get(nomeFornecedor).RemoveProduto(nomeProduto, descricao);
+		}
+		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
+
+	}
 }

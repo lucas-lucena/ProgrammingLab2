@@ -3,6 +3,7 @@ package lab5;
 public class Facade {
 
 	// Operações com Clientes
+
 	private ClienteController cc = new ClienteController();
 
 	/**
@@ -65,6 +66,7 @@ public class Facade {
 	}
 
 	// Operações com Forencedores.
+
 	private FornecedorController fc = new FornecedorController();
 
 	/**
@@ -124,41 +126,83 @@ public class Facade {
 		return fc.RemoverFornecedor(nome);
 	}
 
-	// Operações com Produtos dos Fornecedores
+	// Operações com Produtos dos Fornecedores //
 
 	/**
-	 * Cadastra um produto para um Fornecedor.
-	 */ // apagar nota verde assim que refatorar
+	 * Cadastra um Produto no sistema e o relaciona com um Fornecedor. Este método
+	 * vai receber Strings representando respectivamente, o nome do Fornecedor, e
+	 * nome , descrição e preço do Produto.
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @param preco
+	 * @return String representando a situação do cadastro do Produto.
+	 */
 	public String CadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		return fc.CadastraProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
-	
 
 	/**
-	 * Retorna a representação textual de um produto de um Fornecedor NOME -
-	 * DESCRIÇÃO - PREÇO
-	 */ // apagar nota verde assim que refatorar
+	 * Retornar a representação em String de um Produto.
+	 *
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @return Representação em String de um Produto.
+	 */
+	public String ExibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		return fc.ExibeProduto(nomeFornecedor, nomeProduto, descricao);
+	}
 
 	/**
-	 * Retorna a representação textual de todos os produtos de um certo Fornecedor
-	 * cadastrado no sistema, em ordem alfabetica separando-os com o caractere "|"
-	 * NOME1 - DESCRIÇÃO1 - PREÇO1 | NOME2 - DESCRIÇÃO2 - PREÇO2
-	 */ // apagar nota verde assim que refatorar
+	 * Retorna a representação em String de todos os Produtos associados a um
+	 * Fornecedor
+	 * 
+	 * @param nomeFornecedor
+	 * @return Representação em String de todos os Produtos associados a um
+	 *         Fornecedor
+	 */
+	public String ExibeProdutosDoFornecedor(String nomeFornecedor) {
+		return fc.ExibeProdutosDoFornecedor(nomeFornecedor);
+	}
 
 	/**
-	 * Retorna a representação textual de todos os produtos de todos os Fornecedorer
-	 * cadastrados no sistema, em ordem de Fornecedor e separando-os com o caractere
-	 * "|" FORNECEDOR 1 - NOME1 - DESCRIÇÃO1 - PREÇO1 | FORNECEDOR1 NOME2 -
-	 * DESCRIÇÃO2 - PREÇO2 | FORNECEDOR2 - NOME3 - DESCRIÇÃO3 - PREÇO3
-	 */ // apagar nota verde assim que refatorar
+	 * Retorna a representação em String de todos os Produtos cadastrados no
+	 * sistema.
+	 * 
+	 * @return Representação em String de todos os Produtos cadastrados no sistema.
+	 */
+	public String ExibeTodosOsProdutos() {
+		return fc.ExibeTodosOsFornecedores();
+	}
 
 	/**
-	 * Edita o preço do produto (para outras operações sugere-se deletar o produto
-	 * original e adicionar um alterado)
-	 */ // apagar nota verde assim que refatorar
+	 * Edita as informações de cadastro de um Produto associado ao nome e a
+	 * descrição passada como parâmetro (sendo estas as únicas informações que não
+	 * podem ser alteradas por serem identificadores do Produto).
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @param preco
+	 * @return Situação da edição de um Produto.
+	 */
+	public String EditaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+		return fc.EditaProduto(nomeFornecedor, nomeProduto, descricao, preco);
+	}
 
 	/**
-	 * Remove um produto de um fornecedor
-	 */ // apagar nota verde assim que refatorar
-
+	 * Remove um Produto associado ao nome e a descrição passada como parâmetro
+	 * (sendo estas as únicas informações que não podem ser alteradas por serem
+	 * identificadores do Produto).
+	 * 
+	 * @param nomeFornecedor
+	 * @param nomeProduto
+	 * @param descricao
+	 * @return Situação da remoção do Produto de um Fornecedor.
+	 */
+	public String RemoveProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+		return fc.RemoveProduto(nomeFornecedor, nomeProduto, descricao);
+	}
 }

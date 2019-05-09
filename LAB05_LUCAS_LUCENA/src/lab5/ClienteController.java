@@ -32,7 +32,7 @@ public class ClienteController {
 	 * 
 	 * Caso o Cliente já tenha sido cadastrado (já exista um identificador em mapa
 	 * de Clientes igual ao cpf passado como parâmetro), retornará uma String
-	 * informando que o Cliente já foi cadastrado.
+	 * informando que o Cliente já tinha sido cadastrado anteriormente.
 	 * 
 	 * @param cpf
 	 * @param nome
