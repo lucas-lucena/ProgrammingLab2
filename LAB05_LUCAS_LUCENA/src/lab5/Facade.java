@@ -11,11 +11,11 @@ public class Facade {
 
 	// EasyAccept
 	public static void main(String[] args) {
-		args = new String[] {"lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt", "acceptance_test/use_case_3.txt"};
+		args = new String[] { "lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt",
+				"acceptance_test/use_case_3.txt" };
 		EasyAccept.main(args);
 	}
-	
-	
+
 	/**
 	 * Cadastra um Cliente no sistema, este método vai receber Strings representando
 	 * respectivamente, o cpf, nome, local associado e email do cliente.
@@ -74,7 +74,6 @@ public class Facade {
 		return cc.removerCliente(cpf);
 	}
 
-	
 	// Operações com Forencedores.
 
 	/**
@@ -116,12 +115,12 @@ public class Facade {
 	 * informação que não pode ser alterada) passado como parâmetro.
 	 * 
 	 * @param nome
-	 * @param email
-	 * @param telefone
+	 * @param atributo
+	 * @param novoValor
 	 * @return Situação da edição do Fornecedor.
 	 */
-	public String editaFornecedor(String nome, String email, String telefone) {
-		return fc.editaFornecedor(nome, email, telefone);
+	public String editaFornecedor(String nome, String atributo, String novoValor) {
+		return fc.editaFornecedor(nome, atributo, novoValor);
 	}
 
 	/**
@@ -147,7 +146,7 @@ public class Facade {
 	 * @param preco
 	 * @return String representando a situação do cadastro do Produto.
 	 */
-	public String cadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String adicionaProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
 		return fc.cadastraProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
 
@@ -159,7 +158,7 @@ public class Facade {
 	 * @param descricao
 	 * @return Representação em String de um Produto.
 	 */
-	public String exibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+	public String exibeProduto(String nomeProduto, String descricao, String nomeFornecedor) {
 		return fc.exibeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 
@@ -196,7 +195,7 @@ public class Facade {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
 		return fc.editaProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
 
@@ -213,5 +212,5 @@ public class Facade {
 	public String removeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
 		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
-	
+
 }

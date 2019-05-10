@@ -15,7 +15,7 @@ public class Produto {
 	/**
 	 * Preço do Produto.
 	 */
-	private double preco;
+	private String preco;
 
 	/**
 	 * Constroi um objeto Produto, que tenha como atributos as Strings que
@@ -25,7 +25,7 @@ public class Produto {
 	 * @param descricao
 	 * @param preco
 	 */
-	public Produto(String nome, String descricao, double preco) {
+	public Produto(String nome, String descricao, String preco) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -33,9 +33,10 @@ public class Produto {
 			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
 		}
 
+		String resultado = String.format("%.2f", this.preco);
 		this.nome = nome;
 		this.descricao = descricao;
-		this.preco = preco;
+		this.preco = resultado;
 	}
 	
 	/**
@@ -46,15 +47,17 @@ public class Produto {
 	 */
 	@Override
 	public String toString() {
-		return nome + " - " + descricao + " - R$" + preco;
+		String resultado = String.format("%.2f", this.preco);
+		return nome + " - " + descricao + " - R$" + resultado;
 	}
 
-	public double getPreco() {
+	public String getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
-		this.preco = preco;
+	public void setPreco (String preco) {
+		String resultado = String.format("%.2f", preco);
+		this.preco = resultado;
 	}
 
 	public String getNome() {

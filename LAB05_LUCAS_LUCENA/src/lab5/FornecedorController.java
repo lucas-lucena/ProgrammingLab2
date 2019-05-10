@@ -47,15 +47,17 @@ public class FornecedorController {
 			throw new IllegalArgumentException("Erro no cadastro do fornecedor: email nao pode ser vazio ou nulo.");
 		}
 		if (telefone == null || telefone.equals("")) {
-			throw new IllegalArgumentException("TELEFONE NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro do fornecedor: telefone nao pode ser vazio ou nulo.");
 		}
 
 		if (!mapaFornecedores.containsKey(nome)) {
 			Fornecedor f = new Fornecedor(nome, email, telefone);
 			mapaFornecedores.put(nome, f);
-			return "CADASTRO BEM SUCEDIDO!";
+			return nome;
 		}
-		return "FORNECEDOR JÁ CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro no cadastro de fornecedor: fornecedor ja existe.");
+		}
 	}
 
 	/**
@@ -82,15 +84,16 @@ public class FornecedorController {
 	 */
 	public String exibeFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no exibicao do fornecedor: nome nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaFornecedores.containsKey(nome)) {
 			return mapaFornecedores.get(nome).toString();
 		}
-		return "FORNECEDOR NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao do fornecedor: fornecedor nao existe.");
+		}	
 	}
-
 	/**
 	 * Retornar a representação em String de todos os Fornecedores cadastrados no
 	 * sistema em ordem alfabetica e separando-os com "|". Além disso, este método
@@ -139,27 +142,40 @@ public class FornecedorController {
 	 * informando que a edição foi bem sucedida.
 	 *
 	 * @param nome
-	 * @param email
-	 * @param telefone
+	 * @param atributo
+	 * @param novoValor
 	 * @return Situação da edição de um Fornecedor.
 	 */
-	public String editaFornecedor(String nome, String email, String telefone) {
+	public String editaFornecedor(String nome, String atributo, String novoValor) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
-		if (email == null || email.equals("")) {
-			throw new IllegalArgumentException("EMAIL NULO OU STRING VAZIA!");
+		if (atributo == null || atributo.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao do fornecedor: atributo nao pode ser vazio ou nulo.");
 		}
-		if (telefone == null || telefone.equals("")) {
-			throw new IllegalArgumentException("TELEFONE NULO OU STRING VAZIA!");
+		if (novoValor == null || novoValor.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao do fornecedor: novo valor nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaFornecedores.containsKey(nome)) {
-			this.mapaFornecedores.get(nome).setEmail(email);
-			this.mapaFornecedores.get(nome).setTelefone(telefone);
-			return "EDIÇÃO BEM SUCESSIDA";
+			if (atributo.equals("email")) {
+				this.mapaFornecedores.get(nome).setEmail(novoValor);				
+				return novoValor;
+			}
+			else if (atributo.equals("telefone")) {
+				this.mapaFornecedores.get(nome).setTelefone(novoValor);
+				return novoValor;
+			}
+			else if (atributo.equals("nome")) {
+				throw new IllegalArgumentException("Erro na edicao do fornecedor: nome nao pode ser editado.");
+			}
+			else {
+				throw new IllegalArgumentException("Erro na edicao do fornecedor: atributo nao existe.");
+			}
 		}
-		return "EDIÇÃO MAL SUCESSIDA";
+		else {
+			throw new IllegalArgumentException("Erro na edicao do fornecedor: fornecedor nao existe.");
+		}
 	}
 
 	/**
@@ -184,7 +200,7 @@ public class FornecedorController {
 	 */
 	public String removerFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("nome NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio.");
 		}
 		if (mapaFornecedores.containsKey(nome)) {
 			mapaFornecedores.remove(nome);
@@ -217,21 +233,23 @@ public class FornecedorController {
 	 * @param preco
 	 * @return Situação do Cadastro de um Produto.
 	 */
-	public String cadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String cadastraProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (nomeProduto == null || nomeProduto.equals("")) {
-			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro de produto: descricao nao pode ser vazia ou nula.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).cadastraProduto(nomeProduto, descricao, preco);
 		}
-		return "FORNECEDOR NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro no cadastro de produto: fornecedor nao existe.");
+		}
 	}
 
 	/**
@@ -259,19 +277,23 @@ public class FornecedorController {
 	 */
 	public String exibeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na exibicao de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (nomeProduto == null || nomeProduto.equals("")) {
-			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na exibicao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na exibicao de produto: descricao nao pode ser vazia ou nula.");
 		}
+
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).exibeProduto(nomeProduto, descricao);
 		}
-		return "FORNECEDOR NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao de produto: fornecedor nao existe.");
+		}
+
 	}
 
 	/**
@@ -359,7 +381,7 @@ public class FornecedorController {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
+	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
 		}

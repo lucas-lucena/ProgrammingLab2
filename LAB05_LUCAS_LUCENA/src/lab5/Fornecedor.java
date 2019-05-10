@@ -56,7 +56,7 @@ public class Fornecedor {
 	 */
 	@Override
 	public String toString() {
-		return nome + ", - " + email + " - " + telefone;
+		return nome + " - " + email + " - " + telefone;
 	}
 
 	// Operações referentes a produto.
@@ -84,12 +84,15 @@ public class Fornecedor {
 	 * @param preco
 	 * @return Situação do cadastro de um Produto.
 	 */
-	public String cadastraProduto(String nome, String descricao, double preco) {
+	public String cadastraProduto(String nome, String descricao, float preco) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro no cadastro de produto: descricao nao pode ser vazia ou nula.");
+		}
+		if (preco < 0 ) {
+			throw new IllegalArgumentException("Erro no cadastro de produto: preco invalido.");
 		}
 
 		String idProduto = nome + descricao;
@@ -98,7 +101,9 @@ public class Fornecedor {
 			mapaProdutos.put(idProduto, p);
 			return "CADASTRO BEM SUCEDIDO!";
 		}
-		return "PRODUTO JÁ CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro no cadastro de produto: produto ja existe.");			
+		}
 
 	}
 
@@ -128,17 +133,19 @@ public class Fornecedor {
 	 */
 	public String exibeProduto(String nome, String descricao) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na exibicao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na exibicao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			return mapaProdutos.get(idProduto).toString();
 		}
-		return "PRODUTO NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao de produto: produto nao existe.");
+		}
 	}
 
 	/**
@@ -192,20 +199,23 @@ public class Fornecedor {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nome, String descricao, double preco) {
+	public String editaProduto(String nome, String descricao, float preco) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
-			this.mapaProdutos.get(idProduto).setPreco(preco);
-			return "EDIÇÃO BEM SUCEDIDA!";
+			String resultado = String.format("%.2f", preco);
+			this.mapaProdutos.get(idProduto).setPreco(resultado);
+			return resultado;
 		}
-		return "PRODUTO NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na edicao de produto: fornecedor nao pode ser vazio ou nulo.");			
+		}
 	}
 
 	/**
