@@ -381,21 +381,26 @@ public class FornecedorController {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
+	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, double preco) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (nomeProduto == null || nomeProduto.equals("")) {
-			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao de produto: descricao nao pode ser vazia ou nula.");
+		}
+		if (preco < 0) {
+			throw new IllegalArgumentException("Erro na edicao de produto: preco invalido.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).editaProduto(nomeProduto, descricao, preco);
 		}
-		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na edicao de produto: fornecedor nao existe.");
+		}
 	}
 
 	/**
@@ -424,19 +429,21 @@ public class FornecedorController {
 	 * @return Situação da remoção de um Produto
 	 */
 	public String removeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
-		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
-		}
 		if (nomeProduto == null || nomeProduto.equals("")) {
-			throw new IllegalArgumentException("NOME DO PRODUTO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao de produto: descricao nao pode ser vazia ou nula.");
+		}
+		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro na remocao de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).removeProduto(nomeProduto, descricao);
 		}
-		return "FORNECEDOR NÃO ESTÁ CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na remocao de produto: fornecedor nao existe.");
+		}
 	}
 }

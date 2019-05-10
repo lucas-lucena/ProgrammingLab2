@@ -195,7 +195,7 @@ public class Facade {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nomeFornecedor, String nomeProduto, String descricao, float preco) {
+	public String editaProduto(String nomeProduto, String descricao, String nomeFornecedor, double preco) {
 		return fc.editaProduto(nomeFornecedor, nomeProduto, descricao, preco);
 	}
 
@@ -209,7 +209,7 @@ public class Facade {
 	 * @param descricao
 	 * @return Situação da remoção do Produto de um Fornecedor.
 	 */
-	public String removeProduto(String nomeFornecedor, String nomeProduto, String descricao) {
+	public String removeProduto (String nomeProduto, String descricao, String nomeFornecedor) {
 		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 

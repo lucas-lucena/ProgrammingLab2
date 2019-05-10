@@ -199,22 +199,25 @@ public class Fornecedor {
 	 * @param preco
 	 * @return Situação da edição de um Produto.
 	 */
-	public String editaProduto(String nome, String descricao, float preco) {
+	public String editaProduto(String nome, String descricao, double preco) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("Erro na edicao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
 			throw new IllegalArgumentException("Erro na edicao de produto: descricao nao pode ser vazia ou nula.");
 		}
+		if (preco < 0) {
+			throw new IllegalArgumentException("Erro na edicao de produto: preco invalido.");
+		}
+		
 
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
-			String resultado = String.format("%.2f", preco);
-			this.mapaProdutos.get(idProduto).setPreco(resultado);
-			return resultado;
+			this.mapaProdutos.get(idProduto).setPreco(preco);
+			return "PRODUTO EDITADO COM SUCESSO!";
 		}
 		else {
-			throw new IllegalArgumentException("Erro na edicao de produto: fornecedor nao pode ser vazio ou nulo.");			
+			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");			
 		}
 	}
 
@@ -241,10 +244,10 @@ public class Fornecedor {
 	 */
 	public String removeProduto(String nome, String descricao) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao de produto: nome nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
 		String idProduto = nome + descricao;
@@ -252,8 +255,9 @@ public class Fornecedor {
 			this.mapaProdutos.remove(idProduto);
 			return "REMOÇÃO BEM SUCEDIDA!";
 		}
-		return "PRODUTO NÃO CADASTRADO!";
-
+		else {
+			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
+		}
 	}
 
 	// Outros métodos de Fornecedor (getters, setters, hashcode e equals).
