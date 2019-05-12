@@ -60,8 +60,8 @@ public class Facade {
 	 * @param novoValor
 	 * @return Situação da edição do Cliente.
 	 */
-	public String editaCliente(String cpf, String atributo, String novoValor) {
-		return cc.editaCliente(cpf, atributo, novoValor);
+	public void editaCliente(String cpf, String atributo, String novoValor) {
+		cc.editaCliente(cpf, atributo, novoValor);
 	}
 
 	/**
@@ -70,8 +70,8 @@ public class Facade {
 	 * @param cpf
 	 * @return Situação da remoção do Cliente.
 	 */
-	public String removeCliente(String cpf) {
-		return cc.removerCliente(cpf);
+	public void removeCliente(String cpf) {
+		cc.removerCliente(cpf);
 	}
 
 	// Operações com Forencedores.
@@ -209,7 +209,7 @@ public class Facade {
 	 * @param descricao
 	 * @return Situação da remoção do Produto de um Fornecedor.
 	 */
-	public String removeProduto (String nomeProduto, String descricao, String nomeFornecedor) {
+	public String removeProduto(String nomeProduto, String descricao, String nomeFornecedor) {
 		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 

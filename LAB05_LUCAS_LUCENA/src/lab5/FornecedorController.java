@@ -54,8 +54,7 @@ public class FornecedorController {
 			Fornecedor f = new Fornecedor(nome, email, telefone);
 			mapaFornecedores.put(nome, f);
 			return nome;
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro no cadastro de fornecedor: fornecedor ja existe.");
 		}
 	}
@@ -89,11 +88,11 @@ public class FornecedorController {
 
 		if (mapaFornecedores.containsKey(nome)) {
 			return mapaFornecedores.get(nome).toString();
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao do fornecedor: fornecedor nao existe.");
-		}	
+		}
 	}
+
 	/**
 	 * Retornar a representação em String de todos os Fornecedores cadastrados no
 	 * sistema em ordem alfabetica e separando-os com "|". Além disso, este método
@@ -159,21 +158,17 @@ public class FornecedorController {
 
 		if (mapaFornecedores.containsKey(nome)) {
 			if (atributo.equals("email")) {
-				this.mapaFornecedores.get(nome).setEmail(novoValor);				
+				this.mapaFornecedores.get(nome).setEmail(novoValor);
 				return novoValor;
-			}
-			else if (atributo.equals("telefone")) {
+			} else if (atributo.equals("telefone")) {
 				this.mapaFornecedores.get(nome).setTelefone(novoValor);
 				return novoValor;
-			}
-			else if (atributo.equals("nome")) {
+			} else if (atributo.equals("nome")) {
 				throw new IllegalArgumentException("Erro na edicao do fornecedor: nome nao pode ser editado.");
-			}
-			else {
+			} else {
 				throw new IllegalArgumentException("Erro na edicao do fornecedor: atributo nao existe.");
 			}
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na edicao do fornecedor: fornecedor nao existe.");
 		}
 	}
@@ -246,8 +241,7 @@ public class FornecedorController {
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).cadastraProduto(nomeProduto, descricao, preco);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro no cadastro de produto: fornecedor nao existe.");
 		}
 	}
@@ -286,11 +280,9 @@ public class FornecedorController {
 			throw new IllegalArgumentException("Erro na exibicao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
-
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).exibeProduto(nomeProduto, descricao);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao de produto: fornecedor nao existe.");
 		}
 
@@ -397,8 +389,7 @@ public class FornecedorController {
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).editaProduto(nomeProduto, descricao, preco);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na edicao de produto: fornecedor nao existe.");
 		}
 	}
@@ -441,9 +432,9 @@ public class FornecedorController {
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).removeProduto(nomeProduto, descricao);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na remocao de produto: fornecedor nao existe.");
 		}
+
 	}
 }

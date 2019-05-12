@@ -31,7 +31,7 @@ public class Cliente {
 	 * @param email
 	 */
 	public Cliente(String cpf, String nome, String email, String local) {
-		if (cpf == null || cpf.equals("")) {
+		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
 		}
 		if (nome == null || nome.equals("")) {
@@ -61,23 +61,23 @@ public class Cliente {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
-
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
 	public String getLocal() {
-		return local;
+		return this.local;
 	}
 
 	public void setLocal(String local) {
 		this.local = local;
 	}
-
+	
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -101,12 +101,8 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
+		if (!cpf.equals(other.cpf))
 			return false;
 		return true;
 	}
-
 }

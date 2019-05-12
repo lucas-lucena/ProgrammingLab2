@@ -124,7 +124,9 @@ public class ClienteController {
 			Collections.sort(Clientes);
 			return Clientes.stream().map(Cliente -> Cliente.toString()).collect(Collectors.joining(" | "));
 		}
-		return "NENHUM CLIENTE CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao dos clientes: nao existem clientes cadastrados.");
+		}
 	}
 
 	/**
@@ -152,7 +154,7 @@ public class ClienteController {
 	 * @param email
 	 * @return Situação da edição de um Cliente.
 	 */
-	public String editaCliente(String cpf, String atributo, String novoValor) {
+	public void editaCliente(String cpf, String atributo, String novoValor) {
 		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro na edicao do cliente: cpf invalido.");
 		}
@@ -170,13 +172,12 @@ public class ClienteController {
 			if (atributo.equals("nome")) {
 				this.mapaClientes.get(cpf).setNome(novoValor);				
 			}
-			else if (atributo.equals("localizacao")) {
+			if (atributo.equals("localizacao")) {
 				this.mapaClientes.get(cpf).setLocal(novoValor);				
 			}
-			else if (atributo.equals("email")) {
+			if (atributo.equals("email")) {
 				this.mapaClientes.get(cpf).setEmail(novoValor);				
 			}
-			return "EDIÇÃO BEM SUCESSIDA";
 		}
 		else {
 			throw new IllegalArgumentException("Erro na edicao do cliente: cliente nao existe.");
@@ -203,17 +204,18 @@ public class ClienteController {
 	 * @param cpf
 	 * @return Situação da remoção de um Cliente.
 	 */
-	public String removerCliente(String cpf) {
+	public void removerCliente(String cpf) {
 		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("CPF NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na remocao de cliente: cpf invalido");
 		}
-
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro na remocao de cliente: cpf invalido");
+		}
 		if (mapaClientes.containsKey(cpf)) {
 			mapaClientes.remove(cpf);
-			return "REMOÇÃO BEM SUCEDIDA!";
 		}
-
-		return "CLIENTE NÃO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na remocao de cliente: cliente nao existe");
+		}
 	}
-
 }
