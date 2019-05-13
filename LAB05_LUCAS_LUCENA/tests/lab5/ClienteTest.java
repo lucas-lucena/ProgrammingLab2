@@ -74,7 +74,7 @@ class ClienteTest {
 		
 		assertEquals(c1.hashCode(),c1.hashCode()); 
 		assertEquals(c2.hashCode(),c2.hashCode());
-	}
+	} 
 	
 	@Test
 	void equalsTest() {
