@@ -118,7 +118,9 @@ public class FornecedorController {
 			Collections.sort(Fornecedores);
 			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
 		}
-		return "NENHUM FORNECEDOR CADASTRADO!";
+		else {
+		    throw new IllegalArgumentException("Erro na exibicao de todos os fornecedores: nao existe nenhum fornecedor cadastrado");
+        }
 	}
 
 	/**
@@ -147,7 +149,7 @@ public class FornecedorController {
 	 */
 	public String editaFornecedor(String nome, String atributo, String novoValor) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException("Erro na edicao do fornecedor: nome nao pode ser vazio ou nulo.");
 		}
 		if (atributo == null || atributo.equals("")) {
 			throw new IllegalArgumentException("Erro na edicao do fornecedor: atributo nao pode ser vazio ou nulo.");
@@ -201,7 +203,9 @@ public class FornecedorController {
 			mapaFornecedores.remove(nome);
 			return "REMOÇÃO BEM SUCEDIDA!";
 		}
-		return "FORNECEDOR NÃO CADASTRADO!";
+		else {
+		 throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe");
+        }
 	}
 
 	/**

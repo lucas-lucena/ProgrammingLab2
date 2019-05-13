@@ -2,28 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="505287d1-8a7d-48e2-8643-fe5d0236ce21" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/version.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/FornecedorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/FornecedorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/LAB02_LUCAS_LUCENA/bin/" />
     <ignored path="$PROJECT_DIR$/LAB03_LUCAS_LUCENA/bin/" />
@@ -36,12 +19,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ProgrammingLab2$FornecedorTest.ic" NAME="FornecedorTest Coverage Results" MODIFIED="1557770542916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ProgrammingLab2$ClienteControllerTest.ic" NAME="ClienteControllerTest Coverage Results" MODIFIED="1557775237160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>lab5.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ProgrammingLab2$ProdutoTest.ic" NAME="ProdutoTest Coverage Results" MODIFIED="1557773427358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ProgrammingLab2$ProdutoTest.ic" NAME="ProdutoTest Coverage Results" MODIFIED="1557775207692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>lab5.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ProgrammingLab2$FornecedorTest.ic" NAME="FornecedorTest Coverage Results" MODIFIED="1557775212993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>lab5.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ProgrammingLab2$ClienteTest.ic" NAME="ClienteTest Coverage Results" MODIFIED="1557775225507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>lab5.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="315" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1727662343">
@@ -57,24 +49,24 @@
         <counts>
           <entry key="class" value="4" />
           <entry key="iml" value="2" />
-          <entry key="java" value="8" />
+          <entry key="java" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="8" />
+          <entry key="JAVA" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1168" />
+          <entry key="java" value="3121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1168" />
+          <entry key="JAVA" value="3121" />
         </counts>
       </usages-collector>
     </session>
@@ -82,19 +74,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteTest.java">
+        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="94" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ProdutoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+            <state relative-caret-position="313">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,19 +86,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java">
+        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+            <state relative-caret-position="2183">
+              <caret line="175" column="75" selection-start-line="175" selection-start-column="75" selection-end-line="175" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-92">
+              <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java">
+        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/FornecedorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="175" column="75" selection-start-line="175" selection-start-column="75" selection-end-line="175" selection-end-column="75" />
+            <state relative-caret-position="328">
+              <caret line="206" column="100" selection-start-line="206" selection-start-column="100" selection-end-line="206" selection-end-column="100" />
+              <folding>
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#376#377#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/ClienteController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2010">
+              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -144,8 +149,11 @@
         <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java" />
         <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorTest.java" />
         <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteTest.java" />
-        <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java" />
         <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ProdutoTest.java" />
+        <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java" />
+        <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java" />
+        <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/FornecedorController.java" />
+        <option value="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorControllerTest.java" />
       </list>
     </option>
   </component>
@@ -203,7 +211,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557774081417" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557779366502" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -229,8 +237,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ProdutoTest">
-    <configuration name="ClienteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.FornecedorControllerTest.removerFornecedorTest">
+    <configuration name="FornecedorControllerTest.cadastraFornecedorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LAB05_LUCAS_LUCENA" />
       <extension name="coverage">
         <pattern>
@@ -239,12 +247,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lab5" />
-      <option name="MAIN_CLASS_NAME" value="lab5.ClienteControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="lab5.FornecedorControllerTest" />
+      <option name="METHOD_NAME" value="cadastraFornecedorTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProdutoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FornecedorControllerTest.editaFornecedorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LAB05_LUCAS_LUCENA" />
       <extension name="coverage">
         <pattern>
@@ -253,12 +263,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lab5" />
-      <option name="MAIN_CLASS_NAME" value="lab5.ProdutoTest" />
+      <option name="MAIN_CLASS_NAME" value="lab5.FornecedorControllerTest" />
+      <option name="METHOD_NAME" value="editaFornecedorTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProdutoTest.construtorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FornecedorControllerTest.exibeFornecedorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="LAB05_LUCAS_LUCENA" />
       <extension name="coverage">
         <pattern>
@@ -267,8 +279,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="lab5" />
-      <option name="MAIN_CLASS_NAME" value="lab5.ProdutoTest" />
-      <option name="METHOD_NAME" value="construtorTest" />
+      <option name="MAIN_CLASS_NAME" value="lab5.FornecedorControllerTest" />
+      <option name="METHOD_NAME" value="exibeFornecedorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FornecedorControllerTest.exibeTodosOsFornecedoresTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LAB05_LUCAS_LUCENA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lab5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lab5" />
+      <option name="MAIN_CLASS_NAME" value="lab5.FornecedorControllerTest" />
+      <option name="METHOD_NAME" value="exibeTodosOsFornecedoresTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FornecedorControllerTest.removerFornecedorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LAB05_LUCAS_LUCENA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="lab5.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="lab5" />
+      <option name="MAIN_CLASS_NAME" value="lab5.FornecedorControllerTest" />
+      <option name="METHOD_NAME" value="removerFornecedorTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -291,53 +335,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProdutoTest.toString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LAB05_LUCAS_LUCENA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lab5.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lab5" />
-      <option name="MAIN_CLASS_NAME" value="lab5.ProdutoTest" />
-      <option name="METHOD_NAME" value="toString" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProdutoTest.toStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="LAB05_LUCAS_LUCENA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lab5.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="lab5" />
-      <option name="MAIN_CLASS_NAME" value="lab5.ProdutoTest" />
-      <option name="METHOD_NAME" value="toStringTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.ClienteControllerTest" />
-      <item itemvalue="JUnit.ProdutoTest.construtorTest" />
-      <item itemvalue="JUnit.ProdutoTest.toString" />
       <item itemvalue="JUnit.ProdutoTest.hashCode" />
-      <item itemvalue="JUnit.ProdutoTest" />
-      <item itemvalue="JUnit.ProdutoTest.toStringTest" />
+      <item itemvalue="JUnit.FornecedorControllerTest.cadastraFornecedorTest" />
+      <item itemvalue="JUnit.FornecedorControllerTest.exibeFornecedorTest" />
+      <item itemvalue="JUnit.FornecedorControllerTest.exibeTodosOsFornecedoresTest" />
+      <item itemvalue="JUnit.FornecedorControllerTest.editaFornecedorTest" />
+      <item itemvalue="JUnit.FornecedorControllerTest.removerFornecedorTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProdutoTest" />
-        <item itemvalue="JUnit.ProdutoTest.toStringTest" />
-        <item itemvalue="JUnit.ProdutoTest.construtorTest" />
-        <item itemvalue="JUnit.ProdutoTest.toString" />
-        <item itemvalue="JUnit.ClienteControllerTest" />
+        <item itemvalue="JUnit.FornecedorControllerTest.removerFornecedorTest" />
+        <item itemvalue="JUnit.FornecedorControllerTest.editaFornecedorTest" />
+        <item itemvalue="JUnit.FornecedorControllerTest.exibeTodosOsFornecedoresTest" />
+        <item itemvalue="JUnit.FornecedorControllerTest.exibeFornecedorTest" />
+        <item itemvalue="JUnit.FornecedorControllerTest.cadastraFornecedorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -355,35 +367,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProdutoTest - 2019.05.13 at 15h 50m 28s.xml">
-      <configuration name="ProdutoTest" configurationId="JUnit" />
+    <history-entry file="ClienteControllerTest - 2019.05.13 at 16h 20m 34s.xml">
+      <configuration name="ClienteControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 53m 44s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="ClienteControllerTest - 2019.05.13 at 16h 20m 38s.xml">
+      <configuration name="ClienteControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 54m 27s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_cadastraFornecedorTest - 2019.05.13 at 16h 33m 02s.xml">
+      <configuration name="FornecedorControllerTest.cadastraFornecedorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 54m 42s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_exibeFornecedorTest - 2019.05.13 at 16h 46m 55s.xml">
+      <configuration name="FornecedorControllerTest.exibeFornecedorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 54m 50s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_exibeTodosOsFornecedoresTest - 2019.05.13 at 16h 52m 15s.xml">
+      <configuration name="FornecedorControllerTest.exibeTodosOsFornecedoresTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 55m 08s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_exibeTodosOsFornecedoresTest - 2019.05.13 at 16h 53m 03s.xml">
+      <configuration name="FornecedorControllerTest.exibeTodosOsFornecedoresTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_construtorTest - 2019.05.13 at 15h 55m 13s.xml">
-      <configuration name="ProdutoTest.construtorTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_exibeTodosOsFornecedoresTest - 2019.05.13 at 16h 54m 24s.xml">
+      <configuration name="FornecedorControllerTest.exibeTodosOsFornecedoresTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_toStringTest - 2019.05.13 at 15h 55m 35s.xml">
-      <configuration name="ProdutoTest.toStringTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_exibeTodosOsFornecedoresTest - 2019.05.13 at 16h 54m 43s.xml">
+      <configuration name="FornecedorControllerTest.exibeTodosOsFornecedoresTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest_toStringTest - 2019.05.13 at 15h 56m 03s.xml">
-      <configuration name="ProdutoTest.toStringTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_editaFornecedorTest - 2019.05.13 at 17h 17m 32s.xml">
+      <configuration name="FornecedorControllerTest.editaFornecedorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ProdutoTest - 2019.05.13 at 15h 56m 08s.xml">
-      <configuration name="ProdutoTest" configurationId="JUnit" />
+    <history-entry file="FornecedorControllerTest_removerFornecedorTest - 2019.05.13 at 17h 29m 07s.xml">
+      <configuration name="FornecedorControllerTest.removerFornecedorTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -398,8 +410,37 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32972974" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32972974" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32972974" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32982844" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18649696" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -417,7 +458,7 @@
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" visible="true" weight="0.32982844" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -452,6 +493,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Object.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ProdutoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="94" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -462,51 +534,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/ClienteController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2010">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/lang/Object.class">
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="313">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Fornecedor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
+        <state relative-caret-position="2183">
           <caret line="175" column="75" selection-start-line="175" selection-start-column="75" selection-end-line="175" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/Produto.java">
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/src/lab5/FornecedorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ClienteTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="94" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/ProdutoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        <state relative-caret-position="328">
+          <caret line="206" column="100" selection-start-line="206" selection-start-column="100" selection-end-line="206" selection-end-column="100" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/tests/lab5/FornecedorControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
         </state>
       </provider>
     </entry>

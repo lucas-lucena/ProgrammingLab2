@@ -62,6 +62,7 @@ class ClienteControllerTest {
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("", "nome", "Lucas"));
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("1234567890", "nome", "Lucas"));
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("123456789012", "nome", "Lucas"));
+
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("12345678901", null, "Lucas"));
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("12345678901", "", "Lucas"));
 		assertThrows(IllegalArgumentException.class, () -> this.c.editaCliente("12345678901", "telefone", "Lucas"));

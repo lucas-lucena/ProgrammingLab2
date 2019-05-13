@@ -30,17 +30,17 @@ public class Produto {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
-		}
-		if (preco < 0) {
-			throw new IllegalArgumentException("PRECO INVALIDO!");
-		}
+            throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+        }
+        if (preco < 0) {
+            throw new IllegalArgumentException("PRECO INVALIDO!");
+        }
 
-		this.nome = nome;
-		this.descricao = descricao;
-		this.preco = preco;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
 	}
-	
+
 	/**
 	 * Retorna a representação em String de um Produto seguindo o modelo: 
 	 * "NOME - DESCRIÇÃO - PREÇO"
