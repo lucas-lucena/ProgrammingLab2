@@ -32,6 +32,9 @@ public class Produto {
 		if (descricao == null || descricao.equals("")) {
 			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
 		}
+		if (preco < 0) {
+			throw new IllegalArgumentException("PRECO INVALIDO!");
+		}
 
 		this.nome = nome;
 		this.descricao = descricao;

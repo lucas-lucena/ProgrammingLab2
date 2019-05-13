@@ -172,7 +172,9 @@ public class Fornecedor {
 			Collections.sort(Produtos);
 			return Produtos.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
 		}
-		return "NENHUM PRODUTO CADASTRADO!";
+		else {
+			throw new IllegalArgumentException("Erro na exibicao dos do fornecedor: nao existe nenhum produto cadastrado");
+		}
 	}
 
 	/**
@@ -210,7 +212,6 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na edicao de produto: preco invalido.");
 		}
 		
-
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			this.mapaProdutos.get(idProduto).setPreco(preco);
@@ -299,10 +300,7 @@ public class Fornecedor {
 		if (getClass() != obj.getClass())
 			return false;
 		Fornecedor other = (Fornecedor) obj;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+		if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

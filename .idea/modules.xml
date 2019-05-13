@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LAB02_LUCAS_LUCENA/LAB02_LUCAS_LUCENA.iml" filepath="$PROJECT_DIR$/LAB02_LUCAS_LUCENA/LAB02_LUCAS_LUCENA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB03_LUCAS_LUCENA/LAB03_LUCAS_LUCENA.iml" filepath="$PROJECT_DIR$/LAB03_LUCAS_LUCENA/LAB03_LUCAS_LUCENA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB04_LUCAS_LUCENA/LAB04_LUCAS_LUCENA.iml" filepath="$PROJECT_DIR$/LAB04_LUCAS_LUCENA/LAB04_LUCAS_LUCENA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LAB05_LUCAS_LUCENA/LAB05_LUCAS_LUCENA.iml" filepath="$PROJECT_DIR$/LAB05_LUCAS_LUCENA/LAB05_LUCAS_LUCENA.iml" />
+    </modules>
+  </component>
+</project>
