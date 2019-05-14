@@ -117,10 +117,10 @@ public class FornecedorController {
 		if (!Fornecedores.isEmpty()) {
 			Collections.sort(Fornecedores);
 			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+		} else {
+			throw new IllegalArgumentException(
+					"Erro na exibicao de todos os fornecedores: nao existe nenhum fornecedor cadastrado");
 		}
-		else {
-		    throw new IllegalArgumentException("Erro na exibicao de todos os fornecedores: nao existe nenhum fornecedor cadastrado");
-        }
 	}
 
 	/**
@@ -202,10 +202,9 @@ public class FornecedorController {
 		if (mapaFornecedores.containsKey(nome)) {
 			mapaFornecedores.remove(nome);
 			return "REMOÇÃO BEM SUCEDIDA!";
+		} else {
+			throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe");
 		}
-		else {
-		 throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe");
-        }
 	}
 
 	/**
@@ -241,6 +240,9 @@ public class FornecedorController {
 		}
 		if (descricao == null || descricao.equals("")) {
 			throw new IllegalArgumentException("Erro no cadastro de produto: descricao nao pode ser vazia ou nula.");
+		}
+		if (preco < 0) {
+			throw new IllegalArgumentException("Erro no cadastro de produto: preco invalido.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
@@ -315,13 +317,16 @@ public class FornecedorController {
 	 */
 	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException("NOME DO FORNECEDOR NULO OU STRING VAZIA!");
+			throw new IllegalArgumentException(
+					"Erro na exibicao dos produtos de um fornecedor: não existe o fornecedor");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
-			return mapaFornecedores.get(nomeFornecedor).toString();
+			return mapaFornecedores.get(nomeFornecedor).exibeProdutosDoFornecedor();
+		} else {
+			throw new IllegalArgumentException(
+					"Erro na exibicao dos produtos de um fornecedor: não existe nenhum fornecedor");
 		}
-		return "FORNECEDOR NÃO CADASTRADO!";
 	}
 
 	/**
@@ -339,16 +344,18 @@ public class FornecedorController {
 	 * @return Representação em String de todos os Produtos cadastrados no sistema.
 	 */
 	public String exibeTodosOsProdutos() {
-		ArrayList<String> Fornecedores = new ArrayList<>();
-		for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
-			Fornecedores.add(Fornecedor.exibeProdutosDoFornecedor());
-		}
-		if (!Fornecedores.isEmpty()) {
-			Collections.sort(Fornecedores);
+		if (!mapaFornecedores.isEmpty()) {
+			ArrayList<String> Fornecedores = new ArrayList<>();
+			for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
+				Fornecedores.add(Fornecedor.exibeProdutosDoFornecedor());
+			}
+			if (!Fornecedores.isEmpty()) {
+				Collections.sort(Fornecedores);
+			}
 			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+		} else {
+			throw new IllegalArgumentException("Erro na exibicao de todos os produtos: nenhum fornecedor cadastrado");
 		}
-
-		return "NENHUM FORNECEDOR CADASTRADO!";
 	}
 
 	/**

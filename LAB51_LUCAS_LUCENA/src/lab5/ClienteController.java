@@ -58,11 +58,10 @@ public class ClienteController {
 			Cliente c = new Cliente(cpf, nome, email, local);
 			mapaClientes.put(cpf, c);
 			return cpf;
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: cliente ja existe.");
 		}
-		
+
 	}
 
 	/**
@@ -93,12 +92,11 @@ public class ClienteController {
 
 		if (mapaClientes.containsKey(cpf)) {
 			return mapaClientes.get(cpf).toString();
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao do cliente: cliente nao existe.");
 		}
 	}
-	
+
 	/**
 	 * Retornar a representação em String de todos os Clientes cadastrados no
 	 * sistema em ordem alfabetica e separando-os com "|". Além disso, esté método
@@ -123,8 +121,7 @@ public class ClienteController {
 		if (!Clientes.isEmpty()) {
 			Collections.sort(Clientes);
 			return Clientes.stream().map(Cliente -> Cliente.toString()).collect(Collectors.joining(" | "));
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao dos clientes: nao existem clientes cadastrados.");
 		}
 	}
@@ -170,16 +167,15 @@ public class ClienteController {
 
 		if (mapaClientes.containsKey(cpf)) {
 			if (atributo.equals("nome")) {
-				this.mapaClientes.get(cpf).setNome(novoValor);				
+				this.mapaClientes.get(cpf).setNome(novoValor);
 			}
 			if (atributo.equals("localizacao")) {
-				this.mapaClientes.get(cpf).setLocal(novoValor);				
+				this.mapaClientes.get(cpf).setLocal(novoValor);
 			}
 			if (atributo.equals("email")) {
-				this.mapaClientes.get(cpf).setEmail(novoValor);				
+				this.mapaClientes.get(cpf).setEmail(novoValor);
 			}
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na edicao do cliente: cliente nao existe.");
 		}
 	}
@@ -213,8 +209,7 @@ public class ClienteController {
 		}
 		if (mapaClientes.containsKey(cpf)) {
 			mapaClientes.remove(cpf);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na remocao de cliente: cliente nao existe");
 		}
 	}

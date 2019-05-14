@@ -30,20 +30,20 @@ public class Produto {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
 		if (descricao == null || descricao.equals("")) {
-            throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
-        }
-        if (preco < 0) {
-            throw new IllegalArgumentException("PRECO INVALIDO!");
-        }
+			throw new IllegalArgumentException("DESCRIÇÃO NULO OU STRING VAZIA!");
+		}
+		if (preco < 0) {
+			throw new IllegalArgumentException("PRECO INVALIDO!");
+		}
 
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
 	}
 
 	/**
-	 * Retorna a representação em String de um Produto seguindo o modelo: 
-	 * "NOME - DESCRIÇÃO - PREÇO"
+	 * Retorna a representação em String de um Produto seguindo o modelo: "NOME -
+	 * DESCRIÇÃO - PREÇO"
 	 * 
 	 * @return Representação em String do Produto.
 	 */
@@ -53,11 +53,12 @@ public class Produto {
 		return nome + " - " + descricao + " - R$" + resultado;
 	}
 
-	public double getPreco() {
-		return preco;
+	public String getPreco() {
+		String resultado = String.format("%.2f", this.preco);
+		return resultado;
 	}
 
-	public void setPreco (double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
@@ -87,15 +88,7 @@ public class Produto {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+		if (!(nome + descricao).equals(other.nome + other.descricao))
 			return false;
 		return true;
 	}

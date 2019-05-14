@@ -91,7 +91,7 @@ public class Fornecedor {
 		if (descricao == null || descricao.equals("")) {
 			throw new IllegalArgumentException("Erro no cadastro de produto: descricao nao pode ser vazia ou nula.");
 		}
-		if (preco < 0 ) {
+		if (preco < 0) {
 			throw new IllegalArgumentException("Erro no cadastro de produto: preco invalido.");
 		}
 
@@ -100,9 +100,8 @@ public class Fornecedor {
 			Produto p = new Produto(nome, descricao, preco);
 			mapaProdutos.put(idProduto, p);
 			return "CADASTRO BEM SUCEDIDO!";
-		}
-		else {
-			throw new IllegalArgumentException("Erro no cadastro de produto: produto ja existe.");			
+		} else {
+			throw new IllegalArgumentException("Erro no cadastro de produto: produto ja existe.");
 		}
 
 	}
@@ -142,8 +141,7 @@ public class Fornecedor {
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			return mapaProdutos.get(idProduto).toString();
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao de produto: produto nao existe.");
 		}
 	}
@@ -164,16 +162,18 @@ public class Fornecedor {
 	 * @return Representa todos os Produtos de um Fornecedor.
 	 */
 	public String exibeProdutosDoFornecedor() {
-		ArrayList<String> Produtos = new ArrayList<>();
-		for (Produto Produto : this.mapaProdutos.values()) {
-			Produtos.add(this.nome + " - " + Produto.toString());
-		}
-		if (!Produtos.isEmpty()) {
-			Collections.sort(Produtos);
+		if (!mapaProdutos.isEmpty()) {
+			ArrayList<String> Produtos = new ArrayList<>();
+			for (Produto Produto : this.mapaProdutos.values()) {
+				Produtos.add(this.nome + " - " + Produto.toString());
+			}
+			if (!Produtos.isEmpty()) {
+				Collections.sort(Produtos);
+			}
 			return Produtos.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
-		}
-		else {
-			throw new IllegalArgumentException("Erro na exibicao dos do fornecedor: nao existe nenhum produto cadastrado");
+		} else {
+			throw new IllegalArgumentException(
+					"Erro na exibicao dos do fornecedor: nao existe nenhum produto cadastrado");
 		}
 	}
 
@@ -211,14 +211,13 @@ public class Fornecedor {
 		if (preco < 0) {
 			throw new IllegalArgumentException("Erro na edicao de produto: preco invalido.");
 		}
-		
+
 		String idProduto = nome + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			this.mapaProdutos.get(idProduto).setPreco(preco);
 			return "PRODUTO EDITADO COM SUCESSO!";
-		}
-		else {
-			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");			
+		} else {
+			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
 		}
 	}
 
@@ -255,8 +254,7 @@ public class Fornecedor {
 		if (mapaProdutos.containsKey(idProduto)) {
 			this.mapaProdutos.remove(idProduto);
 			return "REMOÇÃO BEM SUCEDIDA!";
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
 		}
 	}

@@ -51,8 +51,8 @@ public class Cliente {
 	}
 
 	/**
-	 * Retorna a representação em String de um Cliente seguindo o modelo: 
-	 * "NOME - LOCAL - EMAIL"
+	 * Retorna a representação em String de um Cliente seguindo o modelo: "NOME -
+	 * LOCAL - EMAIL"
 	 * 
 	 * @return Representação em string do Cliente.
 	 */
@@ -63,11 +63,11 @@ public class Cliente {
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getLocal() {
 		return this.local;
 	}
@@ -75,7 +75,7 @@ public class Cliente {
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	
+
 	public String getEmail() {
 		return this.email;
 	}
