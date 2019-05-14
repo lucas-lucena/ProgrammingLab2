@@ -71,7 +71,7 @@ class FornecedorTest {
 
 	@Test
 	void exibeProdutosDoFornecedorTest() {
-		assertThrows(IllegalArgumentException.class, () -> f1.exibeProdutosDoFornecedor());
+		assertEquals(f1.exibeProdutosDoFornecedor(), "lucas -");
 
 		f1.cadastraProduto("misto", "pão, queijo e presunto", 2);
 		assertEquals(f1.exibeProdutosDoFornecedor(), "lucas - misto - pão, queijo e presunto - R$2,00");

@@ -171,9 +171,9 @@ public class Fornecedor {
 				Collections.sort(Produtos);
 			}
 			return Produtos.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
-		} else {
-			throw new IllegalArgumentException(
-					"Erro na exibicao dos do fornecedor: nao existe nenhum produto cadastrado");
+		}
+		else {
+			return nome + " -";
 		}
 	}
 

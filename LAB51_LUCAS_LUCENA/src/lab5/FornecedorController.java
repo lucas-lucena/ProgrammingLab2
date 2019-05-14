@@ -203,7 +203,7 @@ public class FornecedorController {
 			mapaFornecedores.remove(nome);
 			return "REMOÇÃO BEM SUCEDIDA!";
 		} else {
-			throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe");
+			throw new IllegalArgumentException("Erro na remocao do fornecedor: fornecedor nao existe.");
 		}
 	}
 
@@ -318,14 +318,14 @@ public class FornecedorController {
 	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
 			throw new IllegalArgumentException(
-					"Erro na exibicao dos produtos de um fornecedor: não existe o fornecedor");
+					"Erro na exibicao de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).exibeProdutosDoFornecedor();
 		} else {
 			throw new IllegalArgumentException(
-					"Erro na exibicao dos produtos de um fornecedor: não existe nenhum fornecedor");
+					"Erro na exibicao de produto: fornecedor nao existe.");
 		}
 	}
 
@@ -348,12 +348,13 @@ public class FornecedorController {
 			ArrayList<String> Fornecedores = new ArrayList<>();
 			for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
 				Fornecedores.add(Fornecedor.exibeProdutosDoFornecedor());
-			}
+			}			
 			if (!Fornecedores.isEmpty()) {
 				Collections.sort(Fornecedores);
 			}
 			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
-		} else {
+		} 
+		else {
 			throw new IllegalArgumentException("Erro na exibicao de todos os produtos: nenhum fornecedor cadastrado");
 		}
 	}

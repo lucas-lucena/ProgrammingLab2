@@ -6,14 +6,17 @@ Laboratórios e Provas da disciplina LP2.
 
 # Comandos GIT:
 
-** git clone **
+**git clone**
 Clona um repositorio criado no github.
 
-** git add --all **
-Adiciona alterações do repositório local para a arvore de alterações.
+**git add --all**
+Adiciona mudanças do repositório local para a arvore de alterações.
 
-** git commit -m "descrição do commit" **
-Realiza um commit com as alterações adicionadas na arvore e com um comentário informando as alterações.
+**git status**
+Verifica as mudanças adicionadas.
+
+**git commit -m "descrição do commit"**
+Submete as mudanças adicionadas com um comentário descritor.
 
 ** git push **
 Adiciona o commit a branch principal.

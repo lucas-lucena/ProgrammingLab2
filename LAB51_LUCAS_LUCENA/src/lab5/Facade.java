@@ -12,7 +12,7 @@ public class Facade {
 	// EasyAccept
 	public static void main(String[] args) {
 		args = new String[] { "lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt",
-				"acceptance_test/use_case_3.txt" };
+				"acceptance_test/use_case_3.txt", "acceptance_test/use_case_4.txt"};
 		EasyAccept.main(args);
 	}
 
@@ -47,7 +47,7 @@ public class Facade {
 	 * 
 	 * @return String representando todos os Clientes cadastrados.
 	 */
-	public String exibeTodosOsClientes() {
+	public String exibeClientes() {
 		return cc.exibeTodosOsClientes();
 	}
 
@@ -106,7 +106,7 @@ public class Facade {
 	 * 
 	 * @return String representando todos os Fornecedores cadastrados.
 	 */
-	public String exibeTodosOsFornecedores() {
+	public String exibeFornecedores() {
 		return fc.exibeTodosOsFornecedores();
 	}
 
@@ -170,7 +170,7 @@ public class Facade {
 	 * @return Representação em String de todos os Produtos associados a um
 	 *         Fornecedor
 	 */
-	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
+	public String exibeProdutosFornecedor(String nomeFornecedor) {
 		return fc.exibeProdutosDoFornecedor(nomeFornecedor);
 	}
 
@@ -180,8 +180,8 @@ public class Facade {
 	 * 
 	 * @return Representação em String de todos os Produtos cadastrados no sistema.
 	 */
-	public String exibeTodosOsProdutos() {
-		return fc.exibeTodosOsFornecedores();
+	public String exibeProdutos() {
+		return fc.exibeTodosOsProdutos();
 	}
 
 	/**
