@@ -18,5 +18,8 @@ Verifica as mudanças adicionadas.
 **git commit -m "descrição do commit"**
 Submete as mudanças adicionadas com um comentário descritor.
 
-** git push **
+**git push**
 Adiciona o commit a branch principal.
+
+**git pull**
+Puxa as alterações do repositório do github para o repositório local. 
