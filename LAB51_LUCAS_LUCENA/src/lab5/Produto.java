@@ -1,6 +1,6 @@
 package lab5;
 
-public class Produto {
+public abstract class Produto {
 
 	/**
 	 * Nome do Produto.
@@ -16,6 +16,8 @@ public class Produto {
 	 * Preço do Produto.
 	 */
 	private double preco;
+	
+	private double fator;
 
 	/**
 	 * Constroi um objeto Produto, que tenha como atributos as Strings que
@@ -25,7 +27,7 @@ public class Produto {
 	 * @param descricao
 	 * @param preco
 	 */
-	public Produto(String nome, String descricao, double preco) {
+	public Produto(String nome, String descricao, double preco, double fator) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("NOME NULO OU STRING VAZIA!");
 		}
@@ -49,27 +51,34 @@ public class Produto {
 	 */
 	@Override
 	public String toString() {
-		String resultado = String.format("%.2f", this.preco);
+		String resultado = String.format("%.2f", preco);
 		return nome + " - " + descricao + " - R$" + resultado;
 	}
 
-	public String getPreco() {
-		String resultado = String.format("%.2f", this.preco);
-		return resultado;
+	public double getPreco() {
+		return preco;
 	}
-
+	
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}
-
+	
 	public String getDescricao() {
 		return descricao;
 	}
-
+	
+	public double getFator() {
+		return this.fator;
+	}
+	
+	public void setFator(double fator) {
+		this.fator = fator;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -92,4 +101,5 @@ public class Produto {
 			return false;
 		return true;
 	}
+
 }

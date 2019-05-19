@@ -3,7 +3,9 @@ package lab5;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
+import comparators.ComparaCombo;
 
 public class Fornecedor {
 	/**
@@ -22,6 +24,8 @@ public class Fornecedor {
 	private String telefone;
 
 	private HashMap<String, Produto> mapaProdutos;
+	
+	private HashMap<String, Produto> mapaCombos;
 
 	/**
 	 * Constroi um objeto Fornecedor que tem como atributos as Strings nome, email e
@@ -46,6 +50,7 @@ public class Fornecedor {
 		this.email = email;
 		this.telefone = telefone;
 		this.mapaProdutos = new HashMap<>();
+		this.mapaCombos = new HashMap<>();
 	}
 
 	/**
@@ -59,6 +64,7 @@ public class Fornecedor {
 		return nome + " - " + email + " - " + telefone;
 	}
 
+	
 	// Operações referentes a produto.
 
 	/**
@@ -95,9 +101,9 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro no cadastro de produto: preco invalido.");
 		}
 
-		String idProduto = nome + descricao;
+		String idProduto = nome + " - " + descricao;
 		if (!mapaProdutos.containsKey(idProduto)) {
-			Produto p = new Produto(nome, descricao, preco);
+			ProdutoSimples p = new ProdutoSimples(nome, descricao, preco);
 			mapaProdutos.put(idProduto, p);
 			return "CADASTRO BEM SUCEDIDO!";
 		} else {
@@ -138,7 +144,7 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na exibicao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
-		String idProduto = nome + descricao;
+		String idProduto = nome + " - " + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			return mapaProdutos.get(idProduto).toString();
 		} else {
@@ -163,14 +169,12 @@ public class Fornecedor {
 	 */
 	public String exibeProdutosDoFornecedor() {
 		if (!mapaProdutos.isEmpty()) {
-			ArrayList<String> Produtos = new ArrayList<>();
-			for (Produto Produto : this.mapaProdutos.values()) {
-				Produtos.add(this.nome + " - " + Produto.toString());
-			}
-			if (!Produtos.isEmpty()) {
-				Collections.sort(Produtos);
-			}
-			return Produtos.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+			List<Produto> Produtos = new ArrayList<>();
+			Produtos.addAll(this.mapaProdutos.values());
+			
+			Collections.sort(Produtos, new ComparaCombo());
+
+			return Produtos.stream().map(p -> this.nome + " - " + p.toString()).collect(Collectors.joining(" | "));
 		}
 		else {
 			return nome + " -";
@@ -212,7 +216,7 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na edicao de produto: preco invalido.");
 		}
 
-		String idProduto = nome + descricao;
+		String idProduto = nome + " - " + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			this.mapaProdutos.get(idProduto).setPreco(preco);
 			return "PRODUTO EDITADO COM SUCESSO!";
@@ -250,7 +254,7 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na remocao de produto: descricao nao pode ser vazia ou nula.");
 		}
 
-		String idProduto = nome + descricao;
+		String idProduto = nome + " - " + descricao;
 		if (mapaProdutos.containsKey(idProduto)) {
 			this.mapaProdutos.remove(idProduto);
 			return "REMOÇÃO BEM SUCEDIDA!";
@@ -258,7 +262,9 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
 		}
 	}
-
+	
+	
+	
 	// Outros métodos de Fornecedor (getters, setters, hashcode e equals).
 
 	public String getEmail() {
@@ -303,4 +309,68 @@ public class Fornecedor {
 		return true;
 	}
 
+	public String cadastraCombo(String nome, String descricao, double fator, String produtos) {
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: nome nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: descricao nao pode ser vazia ou nula.");
+		}
+		if (fator <= 0 || fator >= 1) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: fator invalido.");
+		}
+		if (produtos == null || produtos.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: combo deve ter produtos.");
+		}
+		
+		String idCombo = nome + " - " + descricao;
+		String[] produtosList = produtos.split(", ");
+			
+		if (!mapaCombos.containsKey(idCombo)) {
+		
+			if (!mapaCombos.containsKey(produtosList[0]) &&	 !mapaCombos.containsKey(produtosList[1])) {
+			
+				if (mapaProdutos.containsKey(produtosList[0]) && mapaProdutos.containsKey(produtosList[1])) {
+					Produto combo = new Combo(nome, descricao, fator, mapaProdutos.get(produtosList[0]), mapaProdutos.get(produtosList[1]));
+					mapaCombos.put(idCombo, combo);
+					mapaProdutos.put(idCombo, combo);
+					return "CADASTRO BEM SUCEDIDO";
+				}
+				else {
+					throw new IllegalArgumentException("Erro no cadastro de combo: produto nao existe.");
+				}
+			}
+			else {				
+				throw new IllegalArgumentException("Erro no cadastro de combo: um combo nao pode possuir combos na lista de produtos.");
+			}
+		}
+		else {			
+			throw new IllegalArgumentException("Erro no cadastro de combo: combo ja existe.");
+		}
+	}
+	
+	public String editaCombo(String nome, String descricao, double fator) {
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao de combo: nome nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao de combo: descricao nao pode ser vazia ou nula.");
+		}
+		if (fator <= 0 || fator >= 1) {
+			throw new IllegalArgumentException("Erro na edicao de combo: fator invalido.");
+		}
+		
+		String idCombo = nome + " - " + descricao;
+		
+		if (mapaCombos.containsKey(idCombo)) {
+			mapaCombos.get(idCombo).setFator(fator);
+			return "EDICAO BEM SUCEDIDA!";
+		}
+		
+		else {
+			throw new IllegalArgumentException("Erro na edicao de combo: produto nao existe.");
+		}
+		
+	}
+	
 }

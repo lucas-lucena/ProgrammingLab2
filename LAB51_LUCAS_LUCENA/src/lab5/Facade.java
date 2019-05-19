@@ -12,7 +12,8 @@ public class Facade {
 	// EasyAccept
 	public static void main(String[] args) {
 		args = new String[] { "lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt",
-				"acceptance_test/use_case_3.txt", "acceptance_test/use_case_4.txt"};
+				"acceptance_test/use_case_3.txt", "acceptance_test/use_case_4.txt", "acceptance_test/use_case_5.txt",
+				"acceptance_test/use_case_6.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -213,4 +214,36 @@ public class Facade {
 		return fc.removeProduto(nomeFornecedor, nomeProduto, descricao);
 	}
 
+	/**
+	 * TODO
+	 * 
+	 * @param fornecedor
+	 * @param nome
+	 * @param descricao
+	 * @param fator
+	 * @param produtos
+	 * @return
+	 */
+	public String adicionaCombo(String fornecedor, String nome, String descricao, double fator, String produtos) {
+		return fc.cadastraCombo(fornecedor, nome, descricao, fator, produtos);
+	}
+
+	/**
+	 * TODO
+	 * 
+	 * @param nome
+	 * @param descricao
+	 * @param fornecedor
+	 * @param novoFator
+	 * @return
+	 */
+	public String editaCombo(String nome, String descricao, String fornecedor, double novoFator) {
+		return fc.editaCombo(fornecedor, nome, descricao, novoFator);
+	}
+	
+	public adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+		return cc.adiconaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto);
+	}
+	
+	
 }

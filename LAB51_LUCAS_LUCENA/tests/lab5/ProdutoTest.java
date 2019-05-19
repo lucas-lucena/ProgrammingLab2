@@ -5,31 +5,31 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProdutoTest {
+class ProdutoSimplesTest {
 
-	Produto p1;
-	Produto p2;
+	ProdutoSimples p1;
+	ProdutoSimples p2;
 
 	@BeforeEach
-	void criarProdutos() {
-		p1 = new Produto("misto", "pão, queijo e presunto", 2);
-		p2 = new Produto("americano", "pão, queijo e salada", 3);
+	void criarProdutoSimpless() {
+		p1 = new ProdutoSimples("misto", "pão, queijo e presunto", 2);
+		p2 = new ProdutoSimples("americano", "pão, queijo e salada", 3);
 	}
 
 	@Test
 	void construtorTest() {
-		assertThrows(IllegalArgumentException.class, () -> new Produto(null, "tapioca com queijo", 1));
-		assertThrows(IllegalArgumentException.class, () -> new Produto("", "tapioca com queijo", 1));
+		assertThrows(IllegalArgumentException.class, () -> new ProdutoSimples(null, "tapioca com queijo", 1));
+		assertThrows(IllegalArgumentException.class, () -> new ProdutoSimples("", "tapioca com queijo", 1));
 
-		assertThrows(IllegalArgumentException.class, () -> new Produto("tapioca", null, 1));
-		assertThrows(IllegalArgumentException.class, () -> new Produto("tapioca", "", 1));
+		assertThrows(IllegalArgumentException.class, () -> new ProdutoSimples("tapioca", null, 1));
+		assertThrows(IllegalArgumentException.class, () -> new ProdutoSimples("tapioca", "", 1));
 
-		assertThrows(IllegalArgumentException.class, () -> new Produto("tapioca", "tapioca com queijo", -1));
+		assertThrows(IllegalArgumentException.class, () -> new ProdutoSimples("tapioca", "tapioca com queijo", -1));
 	}
 
 	@Test
 	void toStringTest() {
-		Produto pTest = new Produto("tapioca", "tapioca com queijo", 1);
+		ProdutoSimples pTest = new ProdutoSimples("tapioca", "tapioca com queijo", 1);
 		assertEquals(pTest.toString(), "tapioca - tapioca com queijo - R$1,00");
 		assertEquals(p1.toString(), "misto - pão, queijo e presunto - R$2,00");
 
@@ -64,8 +64,8 @@ class ProdutoTest {
 
 	@Test
 	void equalsTest() {
-		Produto p3 = new Produto("misto", "pão, queijo e presunto", 2);
-		Produto p4 = new Produto("americano", "pão, queijo e salada", 3);
+		ProdutoSimples p3 = new ProdutoSimples("misto", "pão, queijo e presunto", 2);
+		ProdutoSimples p4 = new ProdutoSimples("americano", "pão, queijo e salada", 3);
 
 		assertTrue(p1.equals(p1));
 		assertFalse(p1.equals(""));

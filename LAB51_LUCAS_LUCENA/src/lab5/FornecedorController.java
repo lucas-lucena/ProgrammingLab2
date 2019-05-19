@@ -449,4 +449,63 @@ public class FornecedorController {
 		}
 
 	}
+
+	/**TODO
+	 * 
+	 * @param fornecedor
+	 * @param nome
+	 * @param descricao
+	 * @param fator
+	 * @param produtos
+	 * @return
+	 */
+	public String cadastraCombo(String fornecedor, String nome, String descricao, double fator, String produtos) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: nome nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: descricao nao pode ser vazia ou nula.");
+		}
+		if (fator <= 0 || fator >= 1) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: fator invalido.");
+		}
+		if (produtos == null || produtos.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro de combo: combo deve ter produtos.");
+		}
+		
+		if (mapaFornecedores.containsKey(fornecedor)) {
+			return mapaFornecedores.get(fornecedor).cadastraCombo(nome, descricao, fator, produtos);			
+		}
+		else {
+			throw new IllegalArgumentException("Erro no cadastro de combo: fornecedor nao existe.");
+		}
+		
+		
+	}
+
+	public String editaCombo(String fornecedor, String nome, String descricao, double fator) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao de combo: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao de combo: nome nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao de combo: descricao nao pode ser vazia ou nula.");
+		}
+		if (fator <= 0 || fator >= 1) {
+			throw new IllegalArgumentException("Erro na edicao de combo: fator invalido.");
+		}
+		
+		if (mapaFornecedores.containsKey(fornecedor)) {
+			return mapaFornecedores.get(fornecedor).editaCombo(nome, descricao, fator);
+		}
+		else {
+			throw new IllegalArgumentException("Erro na edicao de combo: fornecedor nao existe.");
+		}
+		
+	}
 }
