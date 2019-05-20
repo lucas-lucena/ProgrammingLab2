@@ -372,5 +372,18 @@ public class Fornecedor {
 		}
 		
 	}
+
+	public void verificaProduto(String nome, String descricao) {
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+		}
+		
+		if (!mapaProdutos.containsKey(nome + " - " + descricao)) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: produto nao existe.");
+		}
+	}
 	
 }

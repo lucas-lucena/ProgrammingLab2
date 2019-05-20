@@ -1,5 +1,7 @@
 package lab5;
 
+import java.util.HashMap;
+
 public class Cliente {
 	/**
 	 * Cpf do Cliente.
@@ -20,6 +22,11 @@ public class Cliente {
 	 * Email do Cliente.
 	 */
 	private String email;
+	
+	/**
+	 * Mapa de compras.
+	 */
+	private HashMap<String, Conta> mapaContas;
 
 	/**
 	 * Constroi um objeto Cliente, que tenha como atributos as Strings que
@@ -44,6 +51,7 @@ public class Cliente {
 			throw new IllegalArgumentException("LOCAL NULO OU STRING VAZIA!");
 		}
 
+		mapaContas = new HashMap<>();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.local = local;
@@ -104,5 +112,31 @@ public class Cliente {
 		if (!cpf.equals(other.cpf))
 			return false;
 		return true;
+	}
+
+	public String adicionaCompra(String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (data == null || data.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
+		}
+		if (nomeDoProduto == null || nomeDoProduto.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
+		}
+		if (descricaoDoProduto == null || descricaoDoProduto.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+		}
+		
+		if (mapaContas.containsKey(fornecedor)) {
+			mapaContas.get(fornecedor).adicionaCompra(data, nomeDoProduto, descricaoDoProduto);
+		}
+		else {
+			Conta conta = new Conta(fornecedor);
+			conta.adicionaCompra(data, nomeDoProduto, descricaoDoProduto);
+			mapaContas.put(fornecedor, conta);
+		}
+		
+		return null;
 	}
 }

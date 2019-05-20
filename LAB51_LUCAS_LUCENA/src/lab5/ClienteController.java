@@ -12,7 +12,7 @@ public class ClienteController {
 	/**
 	 * Constroi um Controller de Clientes com um HashMap vazio.
 	 */
-	public ClienteController() {
+	public ClienteController() {	
 		mapaClientes = new HashMap<>();
 	}
 
@@ -113,7 +113,6 @@ public class ClienteController {
 	 * @return String representando todos os Clientes cadastrados.
 	 */
 	public String exibeTodosOsClientes() {
-
 		ArrayList<String> Clientes = new ArrayList<>();
 		for (Cliente Cliente : this.mapaClientes.values()) {
 			Clientes.add(Cliente.toString());
@@ -213,4 +212,36 @@ public class ClienteController {
 			throw new IllegalArgumentException("Erro na remocao de cliente: cliente nao existe");
 		}
 	}
+	
+	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: cpf invalido.");
+		}
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (data == null || data.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
+		}
+		String[] datas = data.split("/");
+		if (Integer.parseInt(datas[1]) > 12 || Integer.parseInt(datas[1]) < 1) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: data invalida.");
+		}
+		if (nomeDoProduto == null || nomeDoProduto.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
+		}
+		if (descricaoDoProduto == null || descricaoDoProduto.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+		}
+		
+		if (mapaClientes.containsKey(cpf)) {
+			return mapaClientes.get(cpf).adicionaCompra(fornecedor, data, nomeDoProduto, descricaoDoProduto);
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: cliente nao existe.");
+		}
+		
+	}
+	
+	
 }

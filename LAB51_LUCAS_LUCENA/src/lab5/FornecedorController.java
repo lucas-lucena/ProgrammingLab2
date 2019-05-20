@@ -506,6 +506,40 @@ public class FornecedorController {
 		else {
 			throw new IllegalArgumentException("Erro na edicao de combo: fornecedor nao existe.");
 		}
+	}
+	
+	public Fornecedor getFornecedor(String fornecedor) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (mapaFornecedores.containsKey(fornecedor)) {
+			return mapaFornecedores.get(fornecedor);
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");
+		}
+		
+	}
+
+	public void verificaFornecedorEProduto(String fornecedor, String nome, String descricao) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (nome == null || nome.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
+		}
+		if (descricao == null || descricao.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+		}
+		
+		
+		if (mapaFornecedores.containsKey(fornecedor)) {
+			mapaFornecedores.get(fornecedor).verificaProduto(nome, descricao);
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");
+		}
 		
 	}
 }

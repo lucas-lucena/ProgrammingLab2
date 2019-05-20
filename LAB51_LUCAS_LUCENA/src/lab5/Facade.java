@@ -241,9 +241,9 @@ public class Facade {
 		return fc.editaCombo(fornecedor, nome, descricao, novoFator);
 	}
 	
-	public adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
-		return cc.adiconaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto);
+	public String adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+		fc.verificaFornecedorEProduto(fornecedor, nomeDoProduto, descricaoDoProduto);
+		return cc.adicionaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto);
 	}
-	
 	
 }
