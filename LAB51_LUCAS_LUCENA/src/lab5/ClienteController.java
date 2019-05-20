@@ -213,7 +213,7 @@ public class ClienteController {
 		}
 	}
 	
-	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto, double preco) {
 		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: cpf invalido.");
 		}
@@ -235,12 +235,28 @@ public class ClienteController {
 		}
 		
 		if (mapaClientes.containsKey(cpf)) {
-			return mapaClientes.get(cpf).adicionaCompra(fornecedor, data, nomeDoProduto, descricaoDoProduto);
+			return mapaClientes.get(cpf).adicionaCompra(fornecedor, data, nomeDoProduto, descricaoDoProduto, preco);
 		}
 		else {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: cliente nao existe.");
 		}
 		
+	}
+
+	public String getDebito(String cpf, String fornecedor) {
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: cpf invalido.");
+		}
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (mapaClientes.containsKey(cpf)) {
+			return mapaClientes.get(cpf).getDebito(fornecedor);
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao existe.");
+		}
 	}
 	
 	

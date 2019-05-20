@@ -24,7 +24,7 @@ public class Conta {
 		compras = new ArrayList<Compra>();
 	}
 
-	public void adicionaCompra(String data, String nome, String descricao) {
+	public void adicionaCompra(String data, String nome, String descricao, double preco) {
 		if (data == null || data.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
 		}
@@ -36,7 +36,7 @@ public class Conta {
 		}
 		
 		
-		Compra compra = new Compra(data, nome, descricao);
+		Compra compra = new Compra(data, nome, descricao, preco);
 		this.compras.add(compra);
 	}
 	
@@ -51,6 +51,18 @@ public class Conta {
 			return fornecedor + " -";
 		}
 
+	}
+
+	public String getDebito() {
+		double debito = 0;
+		for (Compra compra: compras) {
+			debito += compra.getPreco();
+		}
+
+		String r = String.format("%.2f", debito);
+		String[] e = r.split(",");
+		String x = e[0] + "." + e[1];
+		return x;
 	}
 	
 }

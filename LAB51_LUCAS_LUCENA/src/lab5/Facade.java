@@ -242,8 +242,16 @@ public class Facade {
 	}
 	
 	public String adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
-		fc.verificaFornecedorEProduto(fornecedor, nomeDoProduto, descricaoDoProduto);
-		return cc.adicionaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto);
+		fc.verificaFornecedor(fornecedor);
+		double preco = fc.verificaProduto(fornecedor, nomeDoProduto, descricaoDoProduto);
+		
+		return cc.adicionaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto, preco);
 	}
+	
+	public String getDebito(String cpf, String fornecedor) {
+		fc.verificaFornecedor(fornecedor);
+		return cc.getDebito(cpf, fornecedor);
+	}
+	
 	
 }

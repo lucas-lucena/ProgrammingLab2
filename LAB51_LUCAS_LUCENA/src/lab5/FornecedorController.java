@@ -522,7 +522,7 @@ public class FornecedorController {
 		
 	}
 
-	public void verificaFornecedorEProduto(String fornecedor, String nome, String descricao) {
+	public double verificaProduto(String fornecedor, String nome, String descricao) {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
 		}
@@ -535,10 +535,21 @@ public class FornecedorController {
 		
 		
 		if (mapaFornecedores.containsKey(fornecedor)) {
-			mapaFornecedores.get(fornecedor).verificaProduto(nome, descricao);
+			return mapaFornecedores.get(fornecedor).verificaProduto(nome, descricao);
 		}
 		else {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");
+		}
+		
+	}
+
+	public void verificaFornecedor(String fornecedor) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (!mapaFornecedores.containsKey(fornecedor)) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");			
 		}
 		
 	}

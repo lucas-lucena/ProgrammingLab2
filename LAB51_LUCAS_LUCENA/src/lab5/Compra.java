@@ -9,7 +9,9 @@ public class Compra {
 	
 	private String descricao;
 	
-	public Compra(String data, String nome, String descricao) {
+	private double preco;
+	
+	public Compra(String data, String nome, String descricao, double preco) {
 		if (data == null || data.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
 		}
@@ -23,6 +25,7 @@ public class Compra {
 		this.data = data;
 		this.nome = nome;
 		this.descricao = descricao;
+		this.preco = preco;
 	}
 
 	@Override
@@ -38,6 +41,8 @@ public class Compra {
 		return nome;
 	}
 	
-	
+	public double getPreco() {
+		return preco;
+	}
 	
 }

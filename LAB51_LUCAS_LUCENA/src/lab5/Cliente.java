@@ -114,7 +114,7 @@ public class Cliente {
 		return true;
 	}
 
-	public String adicionaCompra(String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+	public String adicionaCompra(String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto, double preco) {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
 		}
@@ -129,14 +129,28 @@ public class Cliente {
 		}
 		
 		if (mapaContas.containsKey(fornecedor)) {
-			mapaContas.get(fornecedor).adicionaCompra(data, nomeDoProduto, descricaoDoProduto);
+			mapaContas.get(fornecedor).adicionaCompra(data, nomeDoProduto, descricaoDoProduto, preco);
 		}
 		else {
 			Conta conta = new Conta(fornecedor);
-			conta.adicionaCompra(data, nomeDoProduto, descricaoDoProduto);
+			conta.adicionaCompra(data, nomeDoProduto, descricaoDoProduto, preco);
 			mapaContas.put(fornecedor, conta);
 		}
 		
 		return null;
+	}
+
+	public String getDebito(String fornecedor) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (mapaContas.containsKey(fornecedor)) {
+			return mapaContas.get(fornecedor).getDebito();
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao tem debito com fornecedor.");
+		}
+		
 	}
 }
