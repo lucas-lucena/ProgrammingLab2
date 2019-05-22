@@ -9,9 +9,6 @@ adicionaProduto fornecedor="Dona Alba" nome="Suco" descricao="Suco de goiaba (co
 adicionaProduto fornecedor="Marcos" nome="Batata frita" descricao="Porcao de batata frita" preco=4.00
 adicionaProduto fornecedor="Marcos" nome="Refrigerante" descricao="Refrigerante (lata)" preco=2.50
 
-expectError "Erro no cadastro de produto: fornecedor nao pode ser vazio ou nulo." adicionaProduto fornecedor="" nome="Agua" descricao="Garrafa de agua de 500mL" preco=1.00
-expectError "Erro no cadastro de produto: fornecedor nao pode ser vazio ou nulo." adicionaProduto fornecedor= nome="Agua" descricao="Garrafa de agua de 500mL" preco=1.00
-
 ## Adicionando combos ##
 
 adicionaCombo fornecedor="Seu Olavo" nome="X-burguer + suco" descricao="X-burguer com suco de maracuja" fator=0.20 produtos="X-burguer - Hamburguer de carne com queijo e calabresa, Suco - Suco de maracuja (copo)"

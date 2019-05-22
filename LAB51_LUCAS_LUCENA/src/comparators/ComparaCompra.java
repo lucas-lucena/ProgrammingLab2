@@ -8,7 +8,10 @@ public class ComparaCompra implements Comparator<Compra>{
 	
 	@Override
 	public int compare(Compra o1, Compra o2) {
-		if (o1.getNome().equals(o2.getNome())) {
+		if (!o1.getData().equals(o2.getData())) {
+			if (o1.getNome().equals(o2.getNome())) {
+			
+		}
 			return o1.getData().compareTo(o2.getData());
 		}
 		else {

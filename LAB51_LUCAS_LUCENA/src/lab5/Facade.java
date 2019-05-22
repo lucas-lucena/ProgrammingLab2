@@ -249,9 +249,17 @@ public class Facade {
 	}
 	
 	public String getDebito(String cpf, String fornecedor) {
-		fc.verificaFornecedor(fornecedor);
-		return cc.getDebito(cpf, fornecedor);
+		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
+		return cc.getDebito(cpf, fornecedor, fornecedorStatus );
 	}
 	
+	public String exibeContas( String cpf, String fornecedor) {
+		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
+		return cc.exibeContas(cpf, fornecedor, fornecedorStatus );
+	}
+	
+	public String exibeContasClientes () {
+		return cc.exibeContasClientes()
+	}
 	
 }

@@ -197,7 +197,7 @@ public class FornecedorController {
 	 */
 	public String removerFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio.");
+			throw new IllegalArgumentException("Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (mapaFornecedores.containsKey(nome)) {
 			mapaFornecedores.remove(nome);
@@ -543,13 +543,12 @@ public class FornecedorController {
 		
 	}
 
-	public void verificaFornecedor(String fornecedor) {
-		if (fornecedor == null || fornecedor.equals("")) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
-		}
-		
+	public boolean verificaFornecedor(String fornecedor) {
 		if (!mapaFornecedores.containsKey(fornecedor)) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");			
+			return false;			
+		}
+		else {
+			return true;
 		}
 		
 	}

@@ -22,7 +22,10 @@ public class Compra {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
 		
-		this.data = data;
+		String[] dataElements = data.split("/");
+		String newData = dataElements[0] + "-" + dataElements[1] + "-" + dataElements[2];
+		
+		this.data = newData;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;

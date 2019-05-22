@@ -1,6 +1,12 @@
 package lab5;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import comparators.ComparaCombo;
 
 public class Cliente {
 	/**
@@ -152,5 +158,32 @@ public class Cliente {
 			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao tem debito com fornecedor.");
 		}
 		
+	}
+
+	public String exibeContas(String fornecedor) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (mapaContas.containsKey(fornecedor)) {
+			return "Cliente: " + this.nome + " | "  + fornecedor + " | " +  mapaContas.get(fornecedor).exibeCompras();
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cliente nao tem nenhuma conta com o fornecedor.");
+		}
+	}
+	
+	public String exibeContasClientes() {
+		if (!mapaContas.isEmpty()) {
+			ArrayList<String> Contas = new ArrayList<>();
+			for (Conta Conta : this.mapaContas.values()) {
+				Contas.add(Conta.exibeCompras());
+			}			
+
+			return this.nome + " | " + Contas.stream().map(Conta -> Conta.toString()).collect(Collectors.joining(" | "));
+		} 
+		else {
+			throw new IllegalArgumentException("Erro na exibicao de todos as contas: nenhum fornecedor cadastrado");
+		}
 	}
 }

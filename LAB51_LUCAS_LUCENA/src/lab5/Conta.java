@@ -35,7 +35,6 @@ public class Conta {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
 		
-		
 		Compra compra = new Compra(data, nome, descricao, preco);
 		this.compras.add(compra);
 	}
@@ -43,12 +42,12 @@ public class Conta {
 	public String exibeCompras() {
 		if (!compras.isEmpty()) {
 			
-			Collections.sort(this.compras, new ComparaCompra());
+//			Collections.sort(this.compras, new ComparaCompra());
 
-			return compras.stream().map(p -> this.fornecedor + " | " + p.toString()).collect(Collectors.joining(" | "));
+			return compras.stream().map(p -> p.toString()).collect(Collectors.joining(" | "));
 		}
 		else {
-			return fornecedor + " -";
+			return fornecedor + " | ";
 		}
 
 	}

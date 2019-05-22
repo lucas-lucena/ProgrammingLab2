@@ -221,7 +221,7 @@ public class Fornecedor {
 			this.mapaProdutos.get(idProduto).setPreco(preco);
 			return "PRODUTO EDITADO COM SUCESSO!";
 		} else {
-			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
+			throw new IllegalArgumentException("Erro na edicao de produto: produto nao existe.");
 		}
 	}
 

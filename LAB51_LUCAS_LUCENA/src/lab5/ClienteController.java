@@ -41,7 +41,10 @@ public class ClienteController {
 	 * @return String representando a situação do cadastro do Cliente.
 	 */
 	public String cadastraClientes(String cpf, String nome, String email, String local) {
-		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
 		}
 		if (nome == null || nome.equals("")) {
@@ -86,8 +89,11 @@ public class ClienteController {
 	 * @return Representação em string do Cliente.
 	 */
 	public String exibeCliente(String cpf) {
-		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
-			throw new IllegalArgumentException("Erro no cadastro do cliente: cpf invalido.");
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro na exibicao do cliente: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro na exibicao do cliente: cpf invalido.");
 		}
 
 		if (mapaClientes.containsKey(cpf)) {
@@ -151,11 +157,17 @@ public class ClienteController {
 	 * @return Situação da edição de um Cliente.
 	 */
 	public void editaCliente(String cpf, String atributo, String novoValor) {
-		if (cpf == null || cpf.equals("") || cpf.length() != 11) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro na edicao do cliente: cpf invalido.");
 		}
 		if (atributo == null || atributo.equals("")) {
 			throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao pode ser vazio ou nulo.");
+		}
+		if (atributo.equals("cpf")) {
+			throw new IllegalArgumentException("Erro na edicao do cliente: cpf nao pode ser editado.");
 		}
 		if (!atributo.equals("nome") && !atributo.equals("email") && !atributo.equals("localizacao")) {
 			throw new IllegalArgumentException("Erro na edicao do cliente: atributo nao existe.");
@@ -201,19 +213,23 @@ public class ClienteController {
 	 */
 	public void removerCliente(String cpf) {
 		if (cpf == null || cpf.equals("")) {
-			throw new IllegalArgumentException("Erro na remocao de cliente: cpf invalido");
+			throw new IllegalArgumentException("Erro na remocao do cliente: cpf nao pode ser vazio ou nulo");
 		}
-		if (cpf.length() != 11) {
-			throw new IllegalArgumentException("Erro na remocao de cliente: cpf invalido");
-		}
+//		if (cpf.length() != 11) {
+//			throw new IllegalArgumentException("Erro na remocao do cliente: cpf invalido.");
+//		}
+		
 		if (mapaClientes.containsKey(cpf)) {
 			mapaClientes.remove(cpf);
 		} else {
-			throw new IllegalArgumentException("Erro na remocao de cliente: cliente nao existe");
+			throw new IllegalArgumentException("Erro na remocao do cliente: cliente nao existe.");
 		}
 	}
 	
 	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto, double preco) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: cpf nao pode ser vazio ou nulo.");
+		}
 		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: cpf invalido.");
 		}
@@ -223,7 +239,9 @@ public class ClienteController {
 		if (data == null || data.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
 		}
+		
 		String[] datas = data.split("/");
+		
 		if (Integer.parseInt(datas[1]) > 12 || Integer.parseInt(datas[1]) < 1) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data invalida.");
 		}
@@ -243,12 +261,18 @@ public class ClienteController {
 		
 	}
 
-	public String getDebito(String cpf, String fornecedor) {
+	public String getDebito(String cpf, String fornecedor, boolean fornecedorStatus) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: cpf nao pode ser vazio ou nulo.");
+		}
 		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro ao recuperar debito: cpf invalido.");
 		}
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (!fornecedorStatus) {
+			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao existe.");
 		}
 		
 		if (mapaClientes.containsKey(cpf)) {
@@ -257,6 +281,46 @@ public class ClienteController {
 		else {
 			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao existe.");
 		}
+		
+	}
+
+	public String exibeContas(String cpf, String fornecedor, boolean fornecedorStatus) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cpf invalido.");
+		}
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (!fornecedorStatus) {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao existe.");
+		}
+		
+		if (mapaClientes.containsKey(cpf)) {
+			return mapaClientes.get(cpf).exibeContas( fornecedor);
+		}
+		else {
+			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cliente nao existe.");
+		}
+	}
+
+	public String exibeContasClientes() {
+		if (!mapaClientes.isEmpty()) {
+			ArrayList<String> Clientes = new ArrayList<>();
+			for (Cliente Cliente : this.mapaClientes.values()) {
+				Clientes.add(Cliente.exibeContasClientes());
+			}			
+			if (!Clientes.isEmpty()) {
+				Collections.sort(Clientes);
+			}
+			return Clientes.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+		} 
+		else {
+			throw new IllegalArgumentException();
+		}
+		
 	}
 	
 	
