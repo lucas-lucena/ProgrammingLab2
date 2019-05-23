@@ -93,6 +93,10 @@ public class Cliente {
 	public String getEmail() {
 		return this.email;
 	}
+	
+	public HashMap getMapa() {
+		return this.mapaContas;
+	}
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -189,4 +193,22 @@ public class Cliente {
 			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao tem nenhuma conta.");
 		}
 	}
+
+	public String realizaPagamento(String fornecedor) {
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro no pagamento da conta: fornecedor nao pode ser vazio ou nulo.");
+		}
+		
+		if (mapaContas.containsKey(fornecedor)) {
+			mapaContas.remove(fornecedor);
+			return "PAGAMENTO BEM SUCEDIDO!";
+		}
+		else {
+			throw new IllegalArgumentException("Erro no pagamento de conta: nao ha debito do cliente associado a este fornecedor.");
+		}
+	}
+	
+	public String listar
+	
+	
 }

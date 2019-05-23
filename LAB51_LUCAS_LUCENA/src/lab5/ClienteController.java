@@ -5,10 +5,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+import comparators.ComparaCliente;
+import comparators.ComparaConta;
+
 public class ClienteController {
 
 	private HashMap<String, Cliente> mapaClientes;
 
+	private String criterio;
+	
 	/**
 	 * Constroi um Controller de Clientes com um HashMap vazio.
 	 */
@@ -321,6 +326,53 @@ public class ClienteController {
 		else {
 			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao existe.");
 		}
+		
+	}
+
+	public String realizaPagamento(String cpf, String fornecedor, boolean fornecedorStatus) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro no pagamento de conta: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro no pagamento de conta: cpf invalido.");
+		}
+		if (fornecedor == null || fornecedor.equals("")) {
+			throw new IllegalArgumentException("Erro no pagamento de conta: fornecedor nao pode ser vazio ou nulo.");
+		}
+		if (!fornecedorStatus) {
+			throw new IllegalArgumentException("Erro no pagamento de conta: fornecedor nao existe.");
+		}
+		
+		if (mapaClientes.containsKey(cpf)) {
+			return mapaClientes.get(cpf).realizaPagamento(fornecedor);
+		}
+		else {
+			throw new IllegalArgumentException("Erro no pagamento de conta: cliente nao existe.");
+		}
+	}
+
+	public void ordenaPor(String criterio) {
+		this.criterio = criterio.toLowerCase();
+	}
+
+	public String listarCompras() {
+		if (!mapaClientes.isEmpty()) {
+			ArrayList<Cliente> Clientes = new ArrayList<>();
+			for (Cliente Cliente : this.mapaClientes.values()) {
+				Clientes.add(Cliente);
+			}
+		
+			if (this.criterio == "cliente") {				
+				Collections.sort(Clientes, new ComparaCliente());
+			}
+			else if
+			
+			
+		} 
+		else {
+			throw new IllegalArgumentException("");
+		}
+		
 		
 	}
 	

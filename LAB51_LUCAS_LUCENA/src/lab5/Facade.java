@@ -242,7 +242,6 @@ public class Facade {
 	}
 	
 	public String adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
-		fc.verificaFornecedor(fornecedor);
 		double preco = fc.verificaProduto(fornecedor, nomeDoProduto, descricaoDoProduto);
 		
 		return cc.adicionaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto, preco);
@@ -260,6 +259,19 @@ public class Facade {
 	
 	public String exibeContasClientes (String cpf) {
 		return cc.exibeContasClientes(cpf);
+	}
+	
+	public String realizaPagamento(String cpf, String fornecedor) {
+		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
+		return cc.realizaPagamento(cpf, fornecedor, fornecedorStatus);
+	}
+	
+	public void ordenaPor(String criterio) {
+		cc.ordenaPor(criterio);
+	}
+	
+	public String listarCompras() {
+		return cc.listarCompras();
 	}
 	
 }

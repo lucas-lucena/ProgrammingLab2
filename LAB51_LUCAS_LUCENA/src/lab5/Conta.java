@@ -48,8 +48,9 @@ public class Conta {
 		else {
 			return this.fornecedor + " | ";
 		}
-
 	}
+	
+	
 
 	public String getDebito() {
 		double debito = 0;
