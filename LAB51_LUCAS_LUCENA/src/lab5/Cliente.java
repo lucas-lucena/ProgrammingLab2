@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import comparators.ComparaCombo;
+import comparators.ComparaConta;
 
 public class Cliente {
 	/**
@@ -166,7 +166,7 @@ public class Cliente {
 		}
 		
 		if (mapaContas.containsKey(fornecedor)) {
-			return "Cliente: " + this.nome + " | "  + fornecedor + " | " +  mapaContas.get(fornecedor).exibeCompras();
+			return "Cliente: " + this.nome  + " | " +  mapaContas.get(fornecedor).exibeCompras();
 		}
 		else {
 			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cliente nao tem nenhuma conta com o fornecedor.");
@@ -175,15 +175,18 @@ public class Cliente {
 	
 	public String exibeContasClientes() {
 		if (!mapaContas.isEmpty()) {
-			ArrayList<String> Contas = new ArrayList<>();
-			for (Conta Conta : this.mapaContas.values()) {
-				Contas.add(Conta.exibeCompras());
-			}			
+			List<Conta> Contas = new ArrayList<>();
+			Contas.addAll(this.mapaContas.values());
+			
+			Collections.sort(Contas, new ComparaConta());
 
-			return this.nome + " | " + Contas.stream().map(Conta -> Conta.toString()).collect(Collectors.joining(" | "));
+			return this.nome + " | " + Contas.stream().map(c -> c.exibeCompras()).collect(Collectors.joining(" | "));
+			
+
+		//	return this.nome + " | " + Contas.stream().map(Conta -> Conta.toString()).collect(Collectors.joining(" | "));
 		} 
 		else {
-			throw new IllegalArgumentException("Erro na exibicao de todos as contas: nenhum fornecedor cadastrado");
+			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao tem nenhuma conta.");
 		}
 	}
 }

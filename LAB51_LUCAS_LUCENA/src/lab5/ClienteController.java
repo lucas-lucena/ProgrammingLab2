@@ -306,19 +306,20 @@ public class ClienteController {
 		}
 	}
 
-	public String exibeContasClientes() {
-		if (!mapaClientes.isEmpty()) {
-			ArrayList<String> Clientes = new ArrayList<>();
-			for (Cliente Cliente : this.mapaClientes.values()) {
-				Clientes.add(Cliente.exibeContasClientes());
-			}			
-			if (!Clientes.isEmpty()) {
-				Collections.sort(Clientes);
-			}
-			return Clientes.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
+	public String exibeContasClientes(String cpf) {
+		if (cpf == null || cpf.equals("")) {
+			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cpf nao pode ser vazio ou nulo.");
+		}
+		if (cpf.length() != 11) {
+			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cpf invalido.");
+		}
+		
+		
+		if (mapaClientes.containsKey(cpf)) {
+			return "Cliente: " + mapaClientes.get(cpf).exibeContasClientes(); 
 		} 
 		else {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao existe.");
 		}
 		
 	}

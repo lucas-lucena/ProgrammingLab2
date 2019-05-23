@@ -13,7 +13,7 @@ public class Facade {
 	public static void main(String[] args) {
 		args = new String[] { "lab5.Facade", "acceptance_test/use_case_1.txt", "acceptance_test/use_case_2.txt",
 				"acceptance_test/use_case_3.txt", "acceptance_test/use_case_4.txt", "acceptance_test/use_case_5.txt",
-				"acceptance_test/use_case_6.txt" };
+				"acceptance_test/use_case_6.txt", "acceptance_test/use_case_7.txt", "acceptance_test/use_case_8.txt" };
 		EasyAccept.main(args);
 	}
 
@@ -258,8 +258,8 @@ public class Facade {
 		return cc.exibeContas(cpf, fornecedor, fornecedorStatus );
 	}
 	
-	public String exibeContasClientes () {
-		return cc.exibeContasClientes()
+	public String exibeContasClientes (String cpf) {
+		return cc.exibeContasClientes(cpf);
 	}
 	
 }

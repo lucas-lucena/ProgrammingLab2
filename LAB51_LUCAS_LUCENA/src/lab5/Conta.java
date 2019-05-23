@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import comparators.ComparaCompra;
 
 
 public class Conta {
@@ -43,11 +42,11 @@ public class Conta {
 		if (!compras.isEmpty()) {
 			
 //			Collections.sort(this.compras, new ComparaCompra());
-
-			return compras.stream().map(p -> p.toString()).collect(Collectors.joining(" | "));
+			
+			return this.fornecedor + " | " + compras.stream().map(p -> p.toString()).collect(Collectors.joining(" | "));
 		}
 		else {
-			return fornecedor + " | ";
+			return this.fornecedor + " | ";
 		}
 
 	}
@@ -63,5 +62,11 @@ public class Conta {
 		String x = e[0] + "." + e[1];
 		return x;
 	}
+
+	public String getFornecedor() {
+		return fornecedor;
+	}
+	
+	
 	
 }
