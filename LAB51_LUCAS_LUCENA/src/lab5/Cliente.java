@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import comparators.ComparaPorCliente;
 import comparators.ComparaConta;
 
 public class Cliente {
@@ -28,7 +29,7 @@ public class Cliente {
 	 * Email do Cliente.
 	 */
 	private String email;
-	
+
 	/**
 	 * Mapa de compras.
 	 */
@@ -93,7 +94,7 @@ public class Cliente {
 	public String getEmail() {
 		return this.email;
 	}
-	
+
 	public HashMap getMapa() {
 		return this.mapaContas;
 	}
@@ -124,7 +125,8 @@ public class Cliente {
 		return true;
 	}
 
-	public String adicionaCompra(String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto, double preco) {
+	public String adicionaCompra(String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto,
+			double preco) {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao pode ser vazio ou nulo.");
 		}
@@ -135,18 +137,18 @@ public class Cliente {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
 		}
 		if (descricaoDoProduto == null || descricaoDoProduto.equals("")) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+			throw new IllegalArgumentException(
+					"Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
-		
+
 		if (mapaContas.containsKey(fornecedor)) {
 			mapaContas.get(fornecedor).adicionaCompra(data, nomeDoProduto, descricaoDoProduto, preco);
-		}
-		else {
-			Conta conta = new Conta(fornecedor);
+		} else {
+			Conta conta = new Conta(fornecedor, this.nome);
 			conta.adicionaCompra(data, nomeDoProduto, descricaoDoProduto, preco);
 			mapaContas.put(fornecedor, conta);
 		}
-		
+
 		return null;
 	}
 
@@ -154,42 +156,42 @@ public class Cliente {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
 		}
-		
+
 		if (mapaContas.containsKey(fornecedor)) {
 			return mapaContas.get(fornecedor).getDebito();
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao tem debito com fornecedor.");
 		}
-		
+
 	}
 
 	public String exibeContas(String fornecedor) {
 		if (fornecedor == null || fornecedor.equals("")) {
-			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
+			throw new IllegalArgumentException(
+					"Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
 		}
-		
+
 		if (mapaContas.containsKey(fornecedor)) {
-			return "Cliente: " + this.nome  + " | " +  mapaContas.get(fornecedor).exibeCompras();
-		}
-		else {
-			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cliente nao tem nenhuma conta com o fornecedor.");
+			return "Cliente: " + this.nome + " | " + mapaContas.get(fornecedor).exibeCompras();
+		} else {
+			throw new IllegalArgumentException(
+					"Erro ao exibir conta do cliente: cliente nao tem nenhuma conta com o fornecedor.");
 		}
 	}
-	
+
 	public String exibeContasClientes() {
 		if (!mapaContas.isEmpty()) {
 			List<Conta> Contas = new ArrayList<>();
 			Contas.addAll(this.mapaContas.values());
-			
+
 			Collections.sort(Contas, new ComparaConta());
 
-			return this.nome + " | " + Contas.stream().map(c -> c.exibeCompras()).collect(Collectors.joining(" | "));
-			
+			return this.nome + " | "
+					+ Contas.stream().map(Conta -> Conta.exibeCompras()).collect(Collectors.joining(" | "));
 
-		//	return this.nome + " | " + Contas.stream().map(Conta -> Conta.toString()).collect(Collectors.joining(" | "));
-		} 
-		else {
+			// return this.nome + " | " + Contas.stream().map(Conta ->
+			// Conta.toString()).collect(Collectors.joining(" | "));
+		} else {
 			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao tem nenhuma conta.");
 		}
 	}
@@ -198,17 +200,39 @@ public class Cliente {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro no pagamento da conta: fornecedor nao pode ser vazio ou nulo.");
 		}
-		
+
 		if (mapaContas.containsKey(fornecedor)) {
 			mapaContas.remove(fornecedor);
 			return "PAGAMENTO BEM SUCEDIDO!";
-		}
-		else {
-			throw new IllegalArgumentException("Erro no pagamento de conta: nao ha debito do cliente associado a este fornecedor.");
+		} else {
+			throw new IllegalArgumentException(
+					"Erro no pagamento de conta: nao ha debito do cliente associado a este fornecedor.");
 		}
 	}
-	
-	public String listar
-	
-	
+
+	public List listarCompras() {
+		if (!mapaContas.isEmpty()) {
+
+			List<Compra> ComprasDoCliente = new ArrayList<>();
+			for (Conta Conta : this.mapaContas.values()) {
+				List<Compra> CC = Conta.listarCompras();
+
+				for (Compra Compra : CC) {
+					ComprasDoCliente.add(Compra);
+				}
+			}
+
+			if (!ComprasDoCliente.isEmpty()) {
+				return ComprasDoCliente;
+			} else {
+				throw new IllegalArgumentException();
+			}
+
+		} else {
+			return new ArrayList<Compra>();
+		}
+	}
+
+//	public String listar
+
 }

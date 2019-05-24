@@ -1,11 +1,14 @@
- package lab5;
+package lab5;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
-import comparators.ComparaCliente;
+import comparators.ComparaPorCliente;
+import comparators.ComparaPorData;
+import comparators.ComparaPorFornecedor;
 import comparators.ComparaConta;
 
 public class ClienteController {
@@ -13,11 +16,11 @@ public class ClienteController {
 	private HashMap<String, Cliente> mapaClientes;
 
 	private String criterio;
-	
+
 	/**
 	 * Constroi um Controller de Clientes com um HashMap vazio.
 	 */
-	public ClienteController() {	
+	public ClienteController() {
 		mapaClientes = new HashMap<>();
 	}
 
@@ -62,6 +65,7 @@ public class ClienteController {
 			throw new IllegalArgumentException("Erro no cadastro do cliente: email nao pode ser vazio ou nulo.");
 		}
 
+		this.criterio = "nao definido";
 		if (!mapaClientes.containsKey(cpf)) {
 			Cliente c = new Cliente(cpf, nome, email, local);
 			mapaClientes.put(cpf, c);
@@ -223,15 +227,16 @@ public class ClienteController {
 //		if (cpf.length() != 11) {
 //			throw new IllegalArgumentException("Erro na remocao do cliente: cpf invalido.");
 //		}
-		
+
 		if (mapaClientes.containsKey(cpf)) {
 			mapaClientes.remove(cpf);
 		} else {
 			throw new IllegalArgumentException("Erro na remocao do cliente: cliente nao existe.");
 		}
 	}
-	
-	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto, double preco) {
+
+	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto,
+			String descricaoDoProduto, double preco) {
 		if (cpf == null || cpf.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: cpf nao pode ser vazio ou nulo.");
 		}
@@ -244,9 +249,9 @@ public class ClienteController {
 		if (data == null || data.equals("")) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data nao pode ser vazia ou nula.");
 		}
-		
+
 		String[] datas = data.split("/");
-		
+
 		if (Integer.parseInt(datas[1]) > 12 || Integer.parseInt(datas[1]) < 1) {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: data invalida.");
 		}
@@ -254,16 +259,16 @@ public class ClienteController {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
 		}
 		if (descricaoDoProduto == null || descricaoDoProduto.equals("")) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+			throw new IllegalArgumentException(
+					"Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
-		
+
 		if (mapaClientes.containsKey(cpf)) {
 			return mapaClientes.get(cpf).adicionaCompra(fornecedor, data, nomeDoProduto, descricaoDoProduto, preco);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: cliente nao existe.");
 		}
-		
+
 	}
 
 	public String getDebito(String cpf, String fornecedor, boolean fornecedorStatus) {
@@ -279,14 +284,13 @@ public class ClienteController {
 		if (!fornecedorStatus) {
 			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao existe.");
 		}
-		
+
 		if (mapaClientes.containsKey(cpf)) {
 			return mapaClientes.get(cpf).getDebito(fornecedor);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro ao recuperar debito: cliente nao existe.");
 		}
-		
+
 	}
 
 	public String exibeContas(String cpf, String fornecedor, boolean fornecedorStatus) {
@@ -297,16 +301,16 @@ public class ClienteController {
 			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cpf invalido.");
 		}
 		if (fornecedor == null || fornecedor.equals("")) {
-			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
+			throw new IllegalArgumentException(
+					"Erro ao exibir conta do cliente: fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (!fornecedorStatus) {
 			throw new IllegalArgumentException("Erro ao exibir conta do cliente: fornecedor nao existe.");
 		}
-		
+
 		if (mapaClientes.containsKey(cpf)) {
-			return mapaClientes.get(cpf).exibeContas( fornecedor);
-		}
-		else {
+			return mapaClientes.get(cpf).exibeContas(fornecedor);
+		} else {
 			throw new IllegalArgumentException("Erro ao exibir conta do cliente: cliente nao existe.");
 		}
 	}
@@ -318,15 +322,13 @@ public class ClienteController {
 		if (cpf.length() != 11) {
 			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cpf invalido.");
 		}
-		
-		
+
 		if (mapaClientes.containsKey(cpf)) {
-			return "Cliente: " + mapaClientes.get(cpf).exibeContasClientes(); 
-		} 
-		else {
+			return "Cliente: " + mapaClientes.get(cpf).exibeContasClientes();
+		} else {
 			throw new IllegalArgumentException("Erro ao exibir contas do cliente: cliente nao existe.");
 		}
-		
+
 	}
 
 	public String realizaPagamento(String cpf, String fornecedor, boolean fornecedorStatus) {
@@ -342,39 +344,94 @@ public class ClienteController {
 		if (!fornecedorStatus) {
 			throw new IllegalArgumentException("Erro no pagamento de conta: fornecedor nao existe.");
 		}
-		
+
 		if (mapaClientes.containsKey(cpf)) {
 			return mapaClientes.get(cpf).realizaPagamento(fornecedor);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro no pagamento de conta: cliente nao existe.");
 		}
 	}
 
 	public void ordenaPor(String criterio) {
+		if (criterio == null || criterio.equals("")) {
+			throw new IllegalArgumentException("Erro na listagem de compras: criterio nao pode ser vazio ou nulo.");
+		}
+		if (!criterio.toLowerCase().equals("cliente") && !criterio.toLowerCase().equals("fornecedor")
+				&& !criterio.toLowerCase().equals("data")) {
+			throw new IllegalArgumentException("Erro na listagem de compras: criterio nao oferecido pelo sistema.");
+		}
+
 		this.criterio = criterio.toLowerCase();
 	}
 
 	public String listarCompras() {
-		if (!mapaClientes.isEmpty()) {
-			ArrayList<Cliente> Clientes = new ArrayList<>();
-			for (Cliente Cliente : this.mapaClientes.values()) {
-				Clientes.add(Cliente);
-			}
-		
-			if (this.criterio == "cliente") {				
-				Collections.sort(Clientes, new ComparaCliente());
-			}
-			else if
-			
-			
-		} 
-		else {
-			throw new IllegalArgumentException("");
+		if (this.criterio == "nao definido") {
+			throw new IllegalArgumentException(
+					"Erro na listagem de compras: criterio ainda nao definido pelo sistema.");
 		}
-		
-		
+		if (!criterio.toLowerCase().equals("cliente") && !criterio.toLowerCase().equals("fornecedor")
+				&& !criterio.toLowerCase().equals("data")) {
+			throw new IllegalArgumentException("Erro na listagem de compras: criterio nao oferecido pelo sistema.");
+		}
+
+		if (!mapaClientes.isEmpty()) {
+
+			if (this.criterio.equals("cliente")) {
+				List<Compra> ComprasDosClientes = new ArrayList<>();
+				List<Cliente> Clientes = new ArrayList<>();
+
+				for (Cliente Cliente : this.mapaClientes.values()) {
+					List<Compra> compraDoCliente = Cliente.listarCompras();
+					for (Compra Compra : compraDoCliente) {
+						ComprasDosClientes.add(Compra);
+					}
+				}
+				Collections.sort(ComprasDosClientes, new ComparaPorCliente());
+
+				return ComprasDosClientes.stream().map(Compra -> Compra.porCliente())
+						.collect(Collectors.joining(" | "));
+
+			}
+			if (this.criterio.equals("fornecedor")) {
+				List<Compra> ComprasDosClientes = new ArrayList<>();
+				List<Cliente> Clientes = new ArrayList<>();
+
+				for (Cliente Cliente : this.mapaClientes.values()) {
+					List<Compra> compraDoCliente = Cliente.listarCompras();
+					for (Compra Compra : compraDoCliente) {
+						ComprasDosClientes.add(Compra);
+					}
+				}
+				Collections.sort(ComprasDosClientes, new ComparaPorFornecedor());
+
+				return ComprasDosClientes.stream().map(Compra -> Compra.porFornecedor())
+						.collect(Collectors.joining(" | "));
+
+			}
+			if (this.criterio.equals("data")) {
+
+				List<Compra> ComprasDosClientes = new ArrayList<>();
+				List<Cliente> Clientes = new ArrayList<>();
+
+				for (Cliente Cliente : this.mapaClientes.values()) {
+					List<Compra> compraDoCliente = Cliente.listarCompras();
+					for (Compra Compra : compraDoCliente) {
+						ComprasDosClientes.add(Compra);
+					}
+				}
+				Collections.sort(ComprasDosClientes, new ComparaPorData());
+
+				return ComprasDosClientes.stream().map(Compra -> Compra.porData()).collect(Collectors.joining(" | "));
+
+			}
+
+			else {
+				throw new IllegalArgumentException();
+			}
+		} else {
+			throw new IllegalArgumentException();
+		}
+
 	}
-	
-	
+
 }

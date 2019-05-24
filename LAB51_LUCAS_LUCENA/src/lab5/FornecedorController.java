@@ -197,7 +197,8 @@ public class FornecedorController {
 	 */
 	public String removerFornecedor(String nome) {
 		if (nome == null || nome.equals("")) {
-			throw new IllegalArgumentException("Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio ou nulo.");
+			throw new IllegalArgumentException(
+					"Erro na remocao do fornecedor: nome do fornecedor nao pode ser vazio ou nulo.");
 		}
 		if (mapaFornecedores.containsKey(nome)) {
 			mapaFornecedores.remove(nome);
@@ -317,15 +318,13 @@ public class FornecedorController {
 	 */
 	public String exibeProdutosDoFornecedor(String nomeFornecedor) {
 		if (nomeFornecedor == null || nomeFornecedor.equals("")) {
-			throw new IllegalArgumentException(
-					"Erro na exibicao de produto: fornecedor nao pode ser vazio ou nulo.");
+			throw new IllegalArgumentException("Erro na exibicao de produto: fornecedor nao pode ser vazio ou nulo.");
 		}
 
 		if (mapaFornecedores.containsKey(nomeFornecedor)) {
 			return mapaFornecedores.get(nomeFornecedor).exibeProdutosDoFornecedor();
 		} else {
-			throw new IllegalArgumentException(
-					"Erro na exibicao de produto: fornecedor nao existe.");
+			throw new IllegalArgumentException("Erro na exibicao de produto: fornecedor nao existe.");
 		}
 	}
 
@@ -348,13 +347,12 @@ public class FornecedorController {
 			ArrayList<String> Fornecedores = new ArrayList<>();
 			for (Fornecedor Fornecedor : this.mapaFornecedores.values()) {
 				Fornecedores.add(Fornecedor.exibeProdutosDoFornecedor());
-			}			
+			}
 			if (!Fornecedores.isEmpty()) {
 				Collections.sort(Fornecedores);
 			}
 			return Fornecedores.stream().map(Fornecedor -> Fornecedor.toString()).collect(Collectors.joining(" | "));
-		} 
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na exibicao de todos os produtos: nenhum fornecedor cadastrado");
 		}
 	}
@@ -450,7 +448,8 @@ public class FornecedorController {
 
 	}
 
-	/**TODO
+	/**
+	 * TODO
 	 * 
 	 * @param fornecedor
 	 * @param nome
@@ -475,15 +474,13 @@ public class FornecedorController {
 		if (produtos == null || produtos.equals("")) {
 			throw new IllegalArgumentException("Erro no cadastro de combo: combo deve ter produtos.");
 		}
-		
+
 		if (mapaFornecedores.containsKey(fornecedor)) {
-			return mapaFornecedores.get(fornecedor).cadastraCombo(nome, descricao, fator, produtos);			
-		}
-		else {
+			return mapaFornecedores.get(fornecedor).cadastraCombo(nome, descricao, fator, produtos);
+		} else {
 			throw new IllegalArgumentException("Erro no cadastro de combo: fornecedor nao existe.");
 		}
-		
-		
+
 	}
 
 	public String editaCombo(String fornecedor, String nome, String descricao, double fator) {
@@ -499,27 +496,25 @@ public class FornecedorController {
 		if (fator <= 0 || fator >= 1) {
 			throw new IllegalArgumentException("Erro na edicao de combo: fator invalido.");
 		}
-		
+
 		if (mapaFornecedores.containsKey(fornecedor)) {
 			return mapaFornecedores.get(fornecedor).editaCombo(nome, descricao, fator);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro na edicao de combo: fornecedor nao existe.");
 		}
 	}
-	
+
 	public Fornecedor getFornecedor(String fornecedor) {
 		if (fornecedor == null || fornecedor.equals("")) {
 			throw new IllegalArgumentException("Erro ao recuperar debito: fornecedor nao pode ser vazio ou nulo.");
 		}
-		
+
 		if (mapaFornecedores.containsKey(fornecedor)) {
 			return mapaFornecedores.get(fornecedor);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");
 		}
-		
+
 	}
 
 	public double verificaProduto(String fornecedor, String nome, String descricao) {
@@ -530,26 +525,24 @@ public class FornecedorController {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+			throw new IllegalArgumentException(
+					"Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
-		
-		
+
 		if (mapaFornecedores.containsKey(fornecedor)) {
 			return mapaFornecedores.get(fornecedor).verificaProduto(nome, descricao);
-		}
-		else {
+		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: fornecedor nao existe.");
 		}
-		
+
 	}
 
 	public boolean verificaFornecedor(String fornecedor) {
 		if (!mapaFornecedores.containsKey(fornecedor)) {
-			return false;			
-		}
-		else {
+			return false;
+		} else {
 			return true;
 		}
-		
+
 	}
 }

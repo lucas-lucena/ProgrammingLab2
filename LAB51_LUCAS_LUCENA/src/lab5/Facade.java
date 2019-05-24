@@ -240,38 +240,39 @@ public class Facade {
 	public String editaCombo(String nome, String descricao, String fornecedor, double novoFator) {
 		return fc.editaCombo(fornecedor, nome, descricao, novoFator);
 	}
-	
-	public String adicionaCompra (String cpf, String fornecedor, String data, String nomeDoProduto, String descricaoDoProduto) {
+
+	public String adicionaCompra(String cpf, String fornecedor, String data, String nomeDoProduto,
+			String descricaoDoProduto) {
 		double preco = fc.verificaProduto(fornecedor, nomeDoProduto, descricaoDoProduto);
-		
+
 		return cc.adicionaCompra(cpf, fornecedor, data, nomeDoProduto, descricaoDoProduto, preco);
 	}
-	
+
 	public String getDebito(String cpf, String fornecedor) {
 		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
-		return cc.getDebito(cpf, fornecedor, fornecedorStatus );
+		return cc.getDebito(cpf, fornecedor, fornecedorStatus);
 	}
-	
-	public String exibeContas( String cpf, String fornecedor) {
+
+	public String exibeContas(String cpf, String fornecedor) {
 		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
-		return cc.exibeContas(cpf, fornecedor, fornecedorStatus );
+		return cc.exibeContas(cpf, fornecedor, fornecedorStatus);
 	}
-	
-	public String exibeContasClientes (String cpf) {
+
+	public String exibeContasClientes(String cpf) {
 		return cc.exibeContasClientes(cpf);
 	}
-	
+
 	public String realizaPagamento(String cpf, String fornecedor) {
 		boolean fornecedorStatus = fc.verificaFornecedor(fornecedor);
 		return cc.realizaPagamento(cpf, fornecedor, fornecedorStatus);
 	}
-	
+
 	public void ordenaPor(String criterio) {
 		cc.ordenaPor(criterio);
 	}
-	
+
 	public String listarCompras() {
 		return cc.listarCompras();
 	}
-	
+
 }

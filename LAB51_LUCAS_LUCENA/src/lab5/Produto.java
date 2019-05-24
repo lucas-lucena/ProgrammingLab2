@@ -16,7 +16,7 @@ public abstract class Produto {
 	 * Preço do Produto.
 	 */
 	private double preco;
-	
+
 	private double fator;
 
 	/**
@@ -58,27 +58,27 @@ public abstract class Produto {
 	public double getPreco() {
 		return preco;
 	}
-	
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public double getFator() {
 		return this.fator;
 	}
-	
+
 	public void setFator(double fator) {
 		this.fator = fator;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

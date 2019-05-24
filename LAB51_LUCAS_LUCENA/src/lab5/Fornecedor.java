@@ -24,7 +24,7 @@ public class Fornecedor {
 	private String telefone;
 
 	private HashMap<String, Produto> mapaProdutos;
-	
+
 	private HashMap<String, Produto> mapaCombos;
 
 	/**
@@ -64,7 +64,6 @@ public class Fornecedor {
 		return nome + " - " + email + " - " + telefone;
 	}
 
-	
 	// Operações referentes a produto.
 
 	/**
@@ -171,12 +170,11 @@ public class Fornecedor {
 		if (!mapaProdutos.isEmpty()) {
 			List<Produto> Produtos = new ArrayList<>();
 			Produtos.addAll(this.mapaProdutos.values());
-			
+
 			Collections.sort(Produtos, new ComparaCombo());
 
 			return Produtos.stream().map(p -> this.nome + " - " + p.toString()).collect(Collectors.joining(" | "));
-		}
-		else {
+		} else {
 			return nome + " -";
 		}
 	}
@@ -262,9 +260,7 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro na remocao de produto: produto nao existe.");
 		}
 	}
-	
-	
-	
+
 	// Outros métodos de Fornecedor (getters, setters, hashcode e equals).
 
 	public String getEmail() {
@@ -322,33 +318,32 @@ public class Fornecedor {
 		if (produtos == null || produtos.equals("")) {
 			throw new IllegalArgumentException("Erro no cadastro de combo: combo deve ter produtos.");
 		}
-		
+
 		String idCombo = nome + " - " + descricao;
 		String[] produtosList = produtos.split(", ");
-			
+
 		if (!mapaCombos.containsKey(idCombo)) {
-		
-			if (!mapaCombos.containsKey(produtosList[0]) &&	 !mapaCombos.containsKey(produtosList[1])) {
-			
+
+			if (!mapaCombos.containsKey(produtosList[0]) && !mapaCombos.containsKey(produtosList[1])) {
+
 				if (mapaProdutos.containsKey(produtosList[0]) && mapaProdutos.containsKey(produtosList[1])) {
-					Produto combo = new Combo(nome, descricao, fator, mapaProdutos.get(produtosList[0]), mapaProdutos.get(produtosList[1]));
+					Produto combo = new Combo(nome, descricao, fator, mapaProdutos.get(produtosList[0]),
+							mapaProdutos.get(produtosList[1]));
 					mapaCombos.put(idCombo, combo);
 					mapaProdutos.put(idCombo, combo);
 					return "CADASTRO BEM SUCEDIDO";
-				}
-				else {
+				} else {
 					throw new IllegalArgumentException("Erro no cadastro de combo: produto nao existe.");
 				}
+			} else {
+				throw new IllegalArgumentException(
+						"Erro no cadastro de combo: um combo nao pode possuir combos na lista de produtos.");
 			}
-			else {				
-				throw new IllegalArgumentException("Erro no cadastro de combo: um combo nao pode possuir combos na lista de produtos.");
-			}
-		}
-		else {			
+		} else {
 			throw new IllegalArgumentException("Erro no cadastro de combo: combo ja existe.");
 		}
 	}
-	
+
 	public String editaCombo(String nome, String descricao, double fator) {
 		if (nome == null || nome.equals("")) {
 			throw new IllegalArgumentException("Erro na edicao de combo: nome nao pode ser vazio ou nulo.");
@@ -359,18 +354,18 @@ public class Fornecedor {
 		if (fator <= 0 || fator >= 1) {
 			throw new IllegalArgumentException("Erro na edicao de combo: fator invalido.");
 		}
-		
+
 		String idCombo = nome + " - " + descricao;
-		
+
 		if (mapaCombos.containsKey(idCombo)) {
 			mapaCombos.get(idCombo).setFator(fator);
 			return "EDICAO BEM SUCEDIDA!";
 		}
-		
+
 		else {
 			throw new IllegalArgumentException("Erro na edicao de combo: produto nao existe.");
 		}
-		
+
 	}
 
 	public double verificaProduto(String nome, String descricao) {
@@ -378,15 +373,15 @@ public class Fornecedor {
 			throw new IllegalArgumentException("Erro ao cadastrar compra: nome do produto nao pode ser vazio ou nulo.");
 		}
 		if (descricao == null || descricao.equals("")) {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
+			throw new IllegalArgumentException(
+					"Erro ao cadastrar compra: descricao do produto nao pode ser vazia ou nula.");
 		}
-		
+
 		if (mapaProdutos.containsKey(nome + " - " + descricao)) {
 			return mapaProdutos.get(nome + " - " + descricao).getPreco();
-		}
-		else {
-			throw new IllegalArgumentException("Erro ao cadastrar compra: produto nao existe.");			
+		} else {
+			throw new IllegalArgumentException("Erro ao cadastrar compra: produto nao existe.");
 		}
 	}
-	
+
 }
